@@ -1,1692 +1,2023 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#08050d" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08050d">
 
-  <title>UrFirst — Luxury Fashion</title>
+<title>UrFirst — Modern Luxury Fashion</title>
 
-  <!-- =====================================================
-       FONTS
-  ====================================================== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Modern clean luxury typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
-    rel="stylesheet"
-  />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 
-    /* =====================================================
-       ROOT
-    ====================================================== */
+/* =========================================================
+   ROOT
+========================================================= */
 
-    :root {
-      --black: #07050a;
-      --black-soft: #0d0911;
-      --violet: #7d42e8;
-      --violet-deep: #35115e;
-      --violet-light: #b58aff;
+:root{
+    --black:#07050b;
+    --black2:#0d0912;
+    --black3:#120b19;
 
-      --gold: #cda653;
-      --gold-light: #f4db91;
-      --gold-bright: #ffe9a9;
+    --violet:#7d3cff;
+    --violet2:#b06cff;
+    --violet-dark:#32105d;
 
-      --white: #fff;
-      --muted: #aaa3b0;
+    --gold:#c99c45;
+    --gold2:#f4d681;
+    --gold3:#fff0b0;
 
-      --border: rgba(255,255,255,.09);
+    --white:#ffffff;
+    --muted:#aaa5b0;
 
-      --display:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      --body:
-        "DM Sans",
-        Arial,
-        sans-serif;
-    }
+    --display:"Playfair Display",Georgia,serif;
+    --body:"Manrope",Arial,sans-serif;
+}
 
 
-    /* =====================================================
-       RESET
-    ====================================================== */
+/* =========================================================
+   RESET
+========================================================= */
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+html{
+    scroll-behavior:smooth;
+}
 
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--body);
-      overflow-x: hidden;
-    }
+body{
+    background:var(--black);
+    color:var(--white);
+    font-family:var(--body);
+    overflow-x:hidden;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+body,
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
 
-    img {
-      width: 100%;
-      display: block;
-    }
+a{
+    color:inherit;
+    text-decoration:none;
+}
 
-    button {
-      font-family: inherit;
-    }
+img,
+video{
+    display:block;
+    width:100%;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
 
 
-    /* =====================================================
-       GLOBAL GOLDEN PARTICLES
-    ====================================================== */
+/* =========================================================
+   GOLD PARTICLES
+========================================================= */
 
-    .gold-particles {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
+.gold-particles{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    overflow:hidden;
+}
 
-    .gold-particles span {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      background: var(--gold-light);
-      box-shadow:
-        0 0 5px var(--gold),
-        0 0 14px rgba(244,219,145,.7);
+.gold-particles span{
+    position:absolute;
 
-      opacity: 0;
+    width:2px;
+    height:2px;
 
-      animation:
+    border-radius:50%;
+
+    background:var(--gold3);
+
+    box-shadow:
+        0 0 5px var(--gold2),
+        0 0 16px rgba(244,214,129,.7);
+
+    opacity:0;
+
+    animation:
         twinkle
         var(--duration)
         ease-in-out
         infinite;
 
-      animation-delay: var(--delay);
+    animation-delay:var(--delay);
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:0;
+        transform:scale(.4);
     }
 
-    .gold-particles span:nth-child(1) {
-      left: 7%;
-      top: 17%;
-      --duration: 4s;
-      --delay: .3s;
+    45%{
+        opacity:.2;
     }
 
-    .gold-particles span:nth-child(2) {
-      left: 18%;
-      top: 65%;
-      --duration: 5s;
-      --delay: 1s;
+    55%{
+        opacity:1;
+        transform:scale(2.3);
     }
 
-    .gold-particles span:nth-child(3) {
-      left: 28%;
-      top: 32%;
-      --duration: 4.5s;
-      --delay: 2s;
+    65%{
+        opacity:.15;
     }
-
-    .gold-particles span:nth-child(4) {
-      left: 41%;
-      top: 78%;
-      --duration: 5.5s;
-      --delay: .7s;
-    }
-
-    .gold-particles span:nth-child(5) {
-      left: 53%;
-      top: 18%;
-      --duration: 4s;
-      --delay: 1.5s;
-    }
-
-    .gold-particles span:nth-child(6) {
-      left: 64%;
-      top: 55%;
-      --duration: 5s;
-      --delay: 2.5s;
-    }
-
-    .gold-particles span:nth-child(7) {
-      left: 75%;
-      top: 25%;
-      --duration: 4.5s;
-      --delay: .5s;
-    }
-
-    .gold-particles span:nth-child(8) {
-      left: 84%;
-      top: 73%;
-      --duration: 5.5s;
-      --delay: 1.8s;
-    }
-
-    .gold-particles span:nth-child(9) {
-      left: 91%;
-      top: 42%;
-      --duration: 4s;
-      --delay: 3s;
-    }
-
-    .gold-particles span:nth-child(10) {
-      left: 48%;
-      top: 42%;
-      --duration: 6s;
-      --delay: 1s;
-    }
-
-    @keyframes twinkle {
-
-      0%,
-      100% {
-        opacity: 0;
-        transform: scale(.5);
-      }
-
-      45% {
-        opacity: .15;
-      }
-
-      55% {
-        opacity: 1;
-        transform: scale(2);
-      }
-
-      65% {
-        opacity: .2;
-      }
-    }
+}
 
 
-    /* =====================================================
-       LARGE GOLDEN FLARES
-    ====================================================== */
+/* =========================================================
+   GOLD FLARES
+========================================================= */
 
-    .gold-flare {
-      position: fixed;
-      z-index: 0;
-      width: 450px;
-      height: 450px;
-      border-radius: 50%;
-      pointer-events: none;
+.gold-flare{
+    position:fixed;
 
-      background:
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
         radial-gradient(
-          circle,
-          rgba(244,219,145,.12),
-          rgba(205,166,83,.045) 25%,
-          transparent 70%
+            circle,
+            rgba(244,214,129,.13),
+            rgba(201,156,69,.04) 30%,
+            transparent 70%
         );
 
-      filter: blur(20px);
-      animation: flareFloat 12s ease-in-out infinite;
+    filter:blur(25px);
+
+    z-index:0;
+
+    animation:
+        flareMove
+        14s
+        ease-in-out
+        infinite;
+}
+
+.flare-one{
+    left:-250px;
+    top:15%;
+}
+
+.flare-two{
+    right:-250px;
+    bottom:10%;
+
+    animation-delay:-7s;
+}
+
+@keyframes flareMove{
+
+    0%,100%{
+        transform:translate3d(0,0,0) scale(.85);
     }
 
-    .flare-one {
-      left: -180px;
-      top: 18%;
+    50%{
+        transform:translate3d(130px,-80px,0) scale(1.15);
     }
+}
 
-    .flare-two {
-      right: -190px;
-      top: 55%;
-      animation-delay: -5s;
-      animation-duration: 15s;
-    }
 
-    @keyframes flareFloat {
+/* =========================================================
+   ANIMATED BACKGROUND GRADIENT WAVES
+========================================================= */
 
-      0%,
-      100% {
+.background-waves{
+    position:fixed;
+    inset:0;
+
+    z-index:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+}
+
+.wave{
+    position:absolute;
+
+    width:75vw;
+    height:45vw;
+
+    min-width:700px;
+    min-height:450px;
+
+    border-radius:50%;
+
+    filter:blur(70px);
+
+    opacity:.16;
+}
+
+.wave-one{
+    left:-20%;
+    top:10%;
+
+    background:
+        linear-gradient(
+            120deg,
+            var(--violet),
+            transparent 65%
+        );
+
+    animation:
+        waveMoveOne
+        18s
+        ease-in-out
+        infinite;
+}
+
+.wave-two{
+    right:-25%;
+    top:38%;
+
+    background:
+        linear-gradient(
+            120deg,
+            var(--gold),
+            var(--violet),
+            transparent 70%
+        );
+
+    animation:
+        waveMoveTwo
+        22s
+        ease-in-out
+        infinite;
+}
+
+.wave-three{
+    left:10%;
+    bottom:-30%;
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--violet-dark),
+            var(--violet2),
+            transparent 70%
+        );
+
+    animation:
+        waveMoveThree
+        20s
+        ease-in-out
+        infinite;
+}
+
+@keyframes waveMoveOne{
+
+    0%,100%{
         transform:
-          translate3d(0,0,0)
-          scale(.85);
-      }
-
-      50% {
-        transform:
-          translate3d(100px,-60px,0)
-          scale(1.15);
-      }
+            translate3d(0,0,0)
+            rotate(-8deg)
+            scale(1);
     }
 
+    50%{
+        transform:
+            translate3d(130px,70px,0)
+            rotate(8deg)
+            scale(1.12);
+    }
+}
 
-    /* =====================================================
-       LUXURY LOADER
-    ====================================================== */
+@keyframes waveMoveTwo{
 
-    .luxury-loader {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
+    0%,100%{
+        transform:
+            translate3d(0,0,0)
+            rotate(12deg)
+            scale(1);
+    }
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    50%{
+        transform:
+            translate3d(-120px,-90px,0)
+            rotate(-8deg)
+            scale(1.14);
+    }
+}
 
-      background:
+@keyframes waveMoveThree{
+
+    0%,100%{
+        transform:
+            translate3d(0,0,0)
+            rotate(8deg);
+    }
+
+    50%{
+        transform:
+            translate3d(80px,-80px,0)
+            rotate(-8deg)
+            scale(1.1);
+    }
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.luxury-loader{
+    position:fixed;
+    inset:0;
+
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:
         radial-gradient(
-          circle at center,
-          rgba(125,66,232,.2),
-          transparent 38%
+            circle at center,
+            rgba(125,60,255,.22),
+            transparent 38%
         ),
-        #07050a;
+        #07050b;
 
-      overflow: hidden;
-
-      animation:
+    animation:
         loaderExit
         .8s
         cubic-bezier(.76,0,.24,1)
         3s
         forwards;
-    }
+}
 
-    .loader-glow {
-      position: absolute;
+.loader-glow{
+    position:absolute;
 
-      width: 600px;
-      height: 600px;
+    width:600px;
+    height:600px;
 
-      border-radius: 50%;
+    border-radius:50%;
 
-      background:
+    background:
         radial-gradient(
-          circle,
-          rgba(125,66,232,.25),
-          transparent 68%
+            circle,
+            rgba(125,60,255,.25),
+            transparent 70%
         );
 
-      filter: blur(25px);
+    filter:blur(25px);
 
-      animation:
+    animation:
         loaderGlow
         3s
         ease-in-out
         infinite;
-    }
+}
 
-    .loader-ring {
-      position: absolute;
+.loader-ring{
+    position:absolute;
 
-      border-radius: 50%;
-      border: 1px solid rgba(205,166,83,.2);
+    border-radius:50%;
 
-      opacity: 0;
-      transform: scale(.5);
+    border:1px solid rgba(201,156,69,.2);
 
-      animation:
+    opacity:0;
+    transform:scale(.5);
+
+    animation:
         loaderRing
-        2.2s
+        2s
         ease-out
         forwards;
-    }
+}
 
-    .loader-ring.one {
-      width: 320px;
-      height: 320px;
-      animation-delay: .15s;
-    }
+.loader-ring.one{
+    width:320px;
+    height:320px;
+}
 
-    .loader-ring.two {
-      width: 500px;
-      height: 500px;
-      border-color: rgba(125,66,232,.14);
-      animation-delay: .35s;
-    }
+.loader-ring.two{
+    width:500px;
+    height:500px;
 
-    .loader-ring.three {
-      width: 680px;
-      height: 680px;
-      border-color: rgba(205,166,83,.08);
-      animation-delay: .55s;
-    }
+    border-color:rgba(125,60,255,.15);
 
-    .loader-center {
-      position: relative;
-      z-index: 5;
-      text-align: center;
-    }
+    animation-delay:.25s;
+}
 
-    .loader-overline {
-      font-size: 8px;
-      letter-spacing: .55em;
-      text-transform: uppercase;
-      color: var(--gold-light);
+.loader-ring.three{
+    width:680px;
+    height:680px;
 
-      opacity: 0;
+    border-color:rgba(201,156,69,.08);
 
-      animation:
+    animation-delay:.45s;
+}
+
+.loader-center{
+    position:relative;
+    z-index:5;
+
+    text-align:center;
+}
+
+.loader-small{
+    font-size:8px;
+
+    letter-spacing:.5em;
+
+    color:var(--gold2);
+
+    text-transform:uppercase;
+
+    opacity:0;
+
+    animation:
         loaderFade
         .7s
         ease
         .3s
         forwards;
-    }
+}
 
-    .loader-logo {
-      position: relative;
+.loader-logo{
+    position:relative;
 
-      margin-top: 15px;
+    margin-top:18px;
 
-      font-family: var(--display);
-      font-size: clamp(82px, 15vw, 175px);
-      font-weight: 400;
+    font-family:var(--display);
 
-      letter-spacing: -.08em;
-      line-height: .8;
+    font-size:
+        clamp(80px,14vw,170px);
 
-      opacity: 0;
-      transform: scale(.85);
+    font-weight:400;
 
-      animation:
+    letter-spacing:-.08em;
+
+    line-height:.8;
+
+    opacity:0;
+
+    transform:scale(.82);
+
+    animation:
         loaderLogo
         1.15s
         cubic-bezier(.16,1,.3,1)
         .4s
         forwards;
-    }
+}
 
-    .loader-logo::after {
-      content: "UrFirst";
+.loader-logo::after{
+    content:"UrFirst";
 
-      position: absolute;
-      inset: 0;
+    position:absolute;
+    inset:0;
 
-      color: transparent;
+    color:transparent;
 
-      background:
+    background:
         linear-gradient(
-          110deg,
-          transparent 20%,
-          rgba(255,255,255,.7) 43%,
-          var(--gold-bright) 50%,
-          transparent 65%
+            110deg,
+            transparent 20%,
+            rgba(255,255,255,.7) 45%,
+            var(--gold3) 50%,
+            transparent 65%
         );
 
-      background-size: 240% 100%;
+    background-size:240% 100%;
 
-      -webkit-background-clip: text;
-      background-clip: text;
+    -webkit-background-clip:text;
+    background-clip:text;
 
-      animation:
+    animation:
         logoShine
         1.3s
         ease-in-out
-        1.05s
+        1s
         forwards;
-    }
+}
 
-    .loader-sub {
-      margin-top: 25px;
+.loader-sub{
+    margin-top:25px;
 
-      font-size: 8px;
-      letter-spacing: .5em;
+    font-size:8px;
 
-      color: rgba(255,255,255,.48);
+    letter-spacing:.45em;
 
-      opacity: 0;
+    color:rgba(255,255,255,.5);
 
-      animation:
+    opacity:0;
+
+    animation:
         loaderFade
         .8s
         ease
-        1.35s
+        1.3s
         forwards;
-    }
+}
 
-    .loader-gold-line {
-      position: absolute;
+.loader-wipe{
+    position:absolute;
+    inset:0;
 
-      left: 50%;
-      top: 50%;
+    z-index:10;
 
-      width: 260px;
-      height: 1px;
-
-      transform:
-        translate(-50%,-50%)
-        scaleX(0);
-
-      background:
+    background:
         linear-gradient(
-          90deg,
-          transparent,
-          var(--gold),
-          transparent
+            110deg,
+            #07050b,
+            #291044,
+            #f0cf78,
+            #35105f,
+            #07050b
         );
 
-      animation:
-        goldLine
-        1s
-        cubic-bezier(.16,1,.3,1)
-        1s
-        forwards;
-    }
+    transform:translateX(-110%);
 
-    .loader-wipe {
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          110deg,
-          #07050a,
-          #27103f,
-          #cda653,
-          #35115e,
-          #07050a
-        );
-
-      transform: translateX(-110%);
-
-      z-index: 10;
-
-      animation:
-        wipe
+    animation:
+        loaderWipe
         .9s
         cubic-bezier(.76,0,.24,1)
         2.3s
         forwards;
+}
+
+@keyframes loaderFade{
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes loaderLogo{
+
+    0%{
+        opacity:0;
+        transform:scale(.78);
+        filter:blur(14px);
     }
 
-    @keyframes loaderFade {
-      to {
-        opacity: 1;
-      }
+    65%{
+        opacity:1;
+        filter:blur(0);
     }
 
-    @keyframes loaderLogo {
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
 
-      0% {
-        opacity: 0;
-        transform: scale(.78);
-        filter: blur(12px);
-      }
+@keyframes logoShine{
 
-      60% {
-        opacity: 1;
-        filter: blur(0);
-      }
-
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
+    0%{
+        background-position:150% 0;
     }
 
-    @keyframes logoShine {
+    100%{
+        background-position:-100% 0;
+    }
+}
 
-      0% {
-        background-position: 150% 0;
-      }
+@keyframes loaderGlow{
 
-      100% {
-        background-position: -100% 0;
-      }
+    0%,100%{
+        transform:scale(.8);
+        opacity:.5;
     }
 
-    @keyframes loaderGlow {
+    50%{
+        transform:scale(1.15);
+        opacity:1;
+    }
+}
 
-      0%,
-      100% {
-        transform: scale(.8);
-        opacity: .5;
-      }
+@keyframes loaderRing{
 
-      50% {
-        transform: scale(1.15);
-        opacity: 1;
-      }
+    0%{
+        opacity:0;
+        transform:scale(.5);
     }
 
-    @keyframes loaderRing {
-
-      0% {
-        opacity: 0;
-        transform: scale(.5);
-      }
-
-      60% {
-        opacity: .7;
-      }
-
-      100% {
-        opacity: .3;
-        transform: scale(1);
-      }
+    60%{
+        opacity:.7;
     }
 
-    @keyframes goldLine {
+    100%{
+        opacity:.25;
+        transform:scale(1);
+    }
+}
 
-      to {
-        transform:
-          translate(-50%,-50%)
-          scaleX(1);
-      }
+@keyframes loaderWipe{
+
+    0%{
+        transform:translateX(-110%);
     }
 
-    @keyframes wipe {
-
-      0% {
-        transform: translateX(-110%);
-      }
-
-      45% {
-        transform: translateX(0);
-      }
-
-      55% {
-        transform: translateX(0);
-      }
-
-      100% {
-        transform: translateX(110%);
-      }
+    45%{
+        transform:translateX(0);
     }
 
-    @keyframes loaderExit {
-
-      to {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-      }
+    55%{
+        transform:translateX(0);
     }
 
+    100%{
+        transform:translateX(110%);
+    }
+}
 
-    /* =====================================================
-       NAVIGATION
-    ====================================================== */
+@keyframes loaderExit{
 
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
+    to{
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+    }
+}
 
-      width: 100%;
 
-      z-index: 1000;
+/* =========================================================
+   HEADER
+========================================================= */
 
-      padding: 25px 5%;
+header{
+    position:fixed;
 
-      background:
+    top:0;
+    left:0;
+
+    width:100%;
+
+    z-index:1000;
+
+    padding:22px 5%;
+
+    background:
         linear-gradient(
-          180deg,
-          rgba(7,5,10,.82),
-          transparent
+            180deg,
+            rgba(7,5,11,.86),
+            transparent
         );
 
-      backdrop-filter: blur(7px);
+    backdrop-filter:blur(8px);
+}
+
+nav{
+    max-width:1450px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.brand{
+    font-family:var(--display);
+
+    font-size:34px;
+
+    letter-spacing:-.08em;
+}
+
+.nav-links{
+    display:flex;
+
+    gap:38px;
+}
+
+.nav-links a{
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.16em;
+
+    color:rgba(255,255,255,.68);
+
+    transition:.3s ease;
+}
+
+.nav-links a:hover{
+    color:var(--gold2);
+}
+
+
+/* =========================================================
+   UNIVERSAL GOLD BUTTON
+========================================================= */
+
+.gold-button{
+    position:relative;
+
+    overflow:hidden;
+
+    isolation:isolate;
+
+    min-width:160px;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:14px 23px;
+
+    border:1px solid rgba(201,156,69,.5);
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 0%,
+            rgba(201,156,69,.06) 50%,
+            transparent 100%
+        );
+
+    color:white;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.17em;
+
+    transition:
+        transform .35s cubic-bezier(.16,1,.3,1),
+        box-shadow .35s ease,
+        color .35s ease;
+
+    touch-action:manipulation;
+}
+
+.gold-button::before{
+    content:"";
+
+    position:absolute;
+
+    z-index:-2;
+
+    inset:-2px;
+
+    background:
+        linear-gradient(
+            110deg,
+            transparent 10%,
+            rgba(244,214,129,.95) 42%,
+            white 50%,
+            rgba(244,214,129,.9) 58%,
+            transparent 90%
+        );
+
+    background-size:220% 100%;
+
+    opacity:0;
+
+    transition:opacity .3s ease;
+}
+
+.gold-button::after{
+    content:"";
+
+    position:absolute;
+
+    z-index:-1;
+
+    inset:1px;
+
+    background:#0d0912;
+}
+
+.gold-button:hover,
+.gold-button.active{
+    color:#130c04;
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 12px 35px rgba(201,156,69,.2),
+        0 0 25px rgba(201,156,69,.08);
+}
+
+.gold-button:hover::before,
+.gold-button.active::before{
+    opacity:1;
+
+    animation:
+        buttonGoldSweep
+        .9s
+        linear
+        forwards;
+}
+
+.gold-button:hover::after,
+.gold-button.active::after{
+    background:
+        linear-gradient(
+            120deg,
+            var(--gold),
+            var(--gold3),
+            var(--gold)
+        );
+}
+
+@keyframes buttonGoldSweep{
+
+    from{
+        background-position:200% 0;
     }
 
-    nav {
-      max-width: 1450px;
-      margin: auto;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    to{
+        background-position:-20% 0;
     }
-
-    .brand {
-      font-family: var(--display);
-      font-size: 34px;
-      font-weight: 500;
-
-      letter-spacing: -.08em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 40px;
-    }
-
-    .nav-links a {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-
-      color: rgba(255,255,255,.62);
-
-      transition: .3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold-light);
-    }
-
-    .nav-button {
-      padding: 12px 22px;
-
-      border: 1px solid rgba(205,166,83,.45);
-
-      font-size: 9px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-
-      transition: .35s ease;
-    }
-
-    .nav-button:hover {
-      background: var(--gold);
-      color: #100a04;
-      transform: translateY(-3px);
-    }
+}
 
 
-    /* =====================================================
-       HERO
-    ====================================================== */
+/* =========================================================
+   RIPPLE
+========================================================= */
 
-    .hero {
-      position: relative;
-      z-index: 2;
+.button-ripple{
+    position:absolute;
 
-      min-height: 100vh;
+    width:15px;
+    height:15px;
 
-      display: flex;
-      align-items: center;
+    border-radius:50%;
 
-      overflow: hidden;
+    pointer-events:none;
 
-      background:
+    background:
         radial-gradient(
-          circle at 70% 40%,
-          rgba(125,66,232,.18),
-          transparent 32%
+            circle,
+            rgba(255,245,195,.95),
+            rgba(244,214,129,.45) 35%,
+            transparent 70%
         );
+
+    transform:
+        translate(-50%,-50%)
+        scale(0);
+
+    animation:
+        rippleGold
+        .75s
+        ease-out
+        forwards;
+}
+
+@keyframes rippleGold{
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            scale(18);
+
+        opacity:0;
     }
+}
 
-    .hero-inner {
-      width: 90%;
-      max-width: 1450px;
 
-      margin: auto;
+/* =========================================================
+   HERO
+========================================================= */
 
-      padding-top: 80px;
+.hero{
+    position:relative;
 
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
+    z-index:2;
 
-      gap: 70px;
+    min-height:100vh;
 
-      align-items: center;
-    }
+    display:flex;
+    align-items:center;
 
-    .hero-copy {
-      position: relative;
-      z-index: 5;
-    }
+    overflow:hidden;
+}
 
-    .eyebrow {
-      font-size: 9px;
-      letter-spacing: .42em;
-      text-transform: uppercase;
+.hero-inner{
+    width:90%;
 
-      color: var(--gold-light);
+    max-width:1450px;
 
-      margin-bottom: 25px;
-    }
+    margin:auto;
 
-    .hero h1 {
-      font-family: var(--display);
+    padding-top:80px;
 
-      font-size: clamp(75px, 9vw, 145px);
+    display:grid;
 
-      font-weight: 400;
+    grid-template-columns:
+        .9fr 1.1fr;
 
-      line-height: .78;
+    gap:70px;
 
-      letter-spacing: -.075em;
-    }
+    align-items:center;
+}
 
-    .hero h1 span {
-      display: block;
+.hero-copy{
+    position:relative;
+    z-index:5;
+}
 
-      color: transparent;
+.eyebrow{
+    margin-bottom:25px;
 
-      -webkit-text-stroke:
-        1px
-        rgba(255,255,255,.62);
-    }
+    font-size:9px;
 
-    .hero-description {
-      max-width: 480px;
+    letter-spacing:.4em;
 
-      color: var(--muted);
+    color:var(--gold2);
 
-      font-size: 13px;
-      line-height: 1.9;
+    text-transform:uppercase;
+}
 
-      margin: 40px 0;
-    }
+.hero h1{
+    font-family:var(--display);
 
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+    font-size:
+        clamp(72px,9vw,145px);
 
-    .btn {
-      min-width: 165px;
+    font-weight:400;
 
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    letter-spacing:-.075em;
 
-      padding: 15px 25px;
+    line-height:.78;
+}
 
-      border: 1px solid rgba(205,166,83,.48);
+.hero h1 span{
+    display:block;
 
-      font-size: 9px;
+    color:transparent;
 
-      text-transform: uppercase;
-      letter-spacing: .18em;
+    -webkit-text-stroke:
+        1px rgba(255,255,255,.65);
+}
 
-      transition:
-        transform .4s cubic-bezier(.16,1,.3,1),
-        box-shadow .4s ease,
-        background .4s ease;
-    }
+.hero-description{
+    max-width:480px;
 
-    .btn-primary {
-      border: none;
+    margin:38px 0;
 
-      color: #100a04;
+    color:var(--muted);
 
-      background:
-        linear-gradient(
-          120deg,
-          var(--gold),
-          var(--gold-bright),
-          var(--gold)
-        );
-    }
+    font-size:13px;
 
-    .btn:hover {
-      transform: translateY(-5px);
+    line-height:1.9;
+}
 
-      box-shadow:
-        0 20px 45px rgba(205,166,83,.15);
-    }
+.hero-actions{
+    display:flex;
 
-    .hero-image-wrap {
-      position: relative;
+    gap:13px;
 
-      height: 730px;
+    flex-wrap:wrap;
+}
 
-      perspective: 1200px;
-    }
+.hero-image-wrap{
+    position:relative;
 
-    .hero-image {
-      height: 100%;
+    height:720px;
 
-      object-fit: cover;
+    overflow:visible;
+}
 
-      filter:
+.hero-image{
+    height:100%;
+
+    object-fit:cover;
+
+    filter:
         saturate(.82)
-        contrast(1.08);
+        contrast(1.06);
 
-      transform:
-        scale(1.02);
-
-      transition:
+    transition:
         transform 1s cubic-bezier(.16,1,.3,1);
-    }
+}
 
-    .hero-image-wrap:hover .hero-image {
-      transform: scale(1.055);
-    }
+.hero-image-wrap:hover .hero-image{
+    transform:scale(1.045);
+}
 
-    .hero-image-wrap::after {
-      content: "";
+.hero-image-wrap::after{
+    content:"";
 
-      position: absolute;
-      inset: 0;
+    position:absolute;
 
-      background:
+    inset:0;
+
+    background:
         linear-gradient(
-          90deg,
-          rgba(7,5,10,.75),
-          transparent 35%
+            90deg,
+            rgba(7,5,11,.75),
+            transparent 38%
         ),
         linear-gradient(
-          0deg,
-          rgba(7,5,10,.5),
-          transparent 45%
+            0deg,
+            rgba(7,5,11,.5),
+            transparent 45%
         );
-    }
+}
 
-    .hero-ring {
-      position: absolute;
+.hero-ring{
+    position:absolute;
 
-      width: 270px;
-      height: 270px;
+    width:260px;
+    height:260px;
 
-      border: 1px solid rgba(205,166,83,.55);
+    right:-85px;
+    bottom:65px;
 
-      border-radius: 50%;
+    z-index:4;
 
-      right: -90px;
-      bottom: 75px;
+    border:1px solid rgba(201,156,69,.55);
 
-      z-index: 4;
+    border-radius:50%;
 
-      animation:
+    animation:
         rotateRing
         18s
         linear
         infinite;
+}
+
+.hero-ring::after{
+    content:"";
+
+    position:absolute;
+
+    width:9px;
+    height:9px;
+
+    left:50%;
+    top:-4px;
+
+    border-radius:50%;
+
+    background:var(--gold3);
+
+    box-shadow:
+        0 0 20px var(--gold2);
+}
+
+@keyframes rotateRing{
+    to{
+        transform:rotate(360deg);
     }
-
-    .hero-ring::after {
-      content: "";
-
-      position: absolute;
-
-      width: 9px;
-      height: 9px;
-
-      background: var(--gold-light);
-
-      border-radius: 50%;
-
-      top: -4px;
-      left: 50%;
-
-      box-shadow:
-        0 0 20px var(--gold-light);
-    }
-
-    @keyframes rotateRing {
-      to {
-        transform: rotate(360deg);
-      }
-    }
+}
 
 
-    /* =====================================================
-       GENERAL SECTIONS
-    ====================================================== */
+/* =========================================================
+   GENERAL SECTION
+========================================================= */
 
-    section {
-      position: relative;
-      z-index: 2;
+section{
+    position:relative;
 
-      padding: 130px 5%;
-    }
+    z-index:2;
 
-    .section-head {
-      max-width: 1450px;
+    padding:125px 5%;
+}
 
-      margin:
-        0 auto
-        55px;
+.section-head{
+    max-width:1450px;
 
-      display: flex;
+    margin:
+        0 auto 55px;
 
-      justify-content: space-between;
+    display:flex;
 
-      align-items: end;
+    justify-content:space-between;
 
-      gap: 40px;
-    }
+    align-items:end;
 
-    .section-number {
-      font-size: 9px;
+    gap:35px;
+}
 
-      color: var(--gold-light);
+.section-number{
+    margin-bottom:13px;
 
-      letter-spacing: .3em;
+    color:var(--gold2);
 
-      margin-bottom: 14px;
-    }
+    font-size:9px;
 
-    .section-title {
-      font-family: var(--display);
+    letter-spacing:.3em;
+}
 
-      font-size:
-        clamp(55px,6vw,90px);
+.section-title{
+    font-family:var(--display);
 
-      font-weight: 400;
+    font-size:
+        clamp(55px,6vw,88px);
 
-      letter-spacing: -.07em;
+    font-weight:400;
 
-      line-height: .85;
-    }
+    letter-spacing:-.07em;
 
-    .section-description {
-      max-width: 370px;
+    line-height:.85;
+}
 
-      color: var(--muted);
+.section-description{
+    max-width:370px;
 
-      font-size: 12px;
+    color:var(--muted);
 
-      line-height: 1.9;
-    }
+    font-size:12px;
+
+    line-height:1.9;
+}
 
 
-    /* =====================================================
-       CLOTHING CAROUSEL
-    ====================================================== */
+/* =========================================================
+   CLOTHING CAROUSEL
+========================================================= */
 
-    .carousel-section {
-      overflow: hidden;
+.carousel-section{
+    overflow:hidden;
 
-      background:
+    background:
         radial-gradient(
-          circle at center,
-          rgba(125,66,232,.12),
-          transparent 45%
+            circle at center,
+            rgba(125,60,255,.12),
+            transparent 50%
         ),
-        var(--black-soft);
-    }
+        var(--black2);
+}
 
-    .fashion-carousel {
-      position: relative;
+.carousel-wrapper{
+    position:relative;
 
-      width: 100%;
+    max-width:1500px;
 
-      overflow: hidden;
+    margin:auto;
+}
 
-      padding:
-        20px 0
+.fashion-carousel{
+    overflow:hidden;
+
+    padding:
+        15px 50px
         40px;
-    }
+}
 
-    .fashion-track {
-      display: flex;
+.fashion-track{
+    display:flex;
 
-      width: max-content;
+    gap:20px;
 
-      gap: 20px;
+    width:max-content;
 
-      animation:
-        clothingRun
-        38s
-        linear
-        infinite;
-    }
+    transform:translateX(0);
 
-    .fashion-carousel:hover .fashion-track {
-      animation-play-state: paused;
-    }
+    transition:
+        transform .7s cubic-bezier(.16,1,.3,1);
+}
 
-    .fashion-card {
-      position: relative;
+.fashion-card{
+    position:relative;
 
-      width: 280px;
-      height: 430px;
+    flex:0 0 260px;
 
-      overflow: hidden;
+    height:400px;
 
-      flex-shrink: 0;
+    overflow:hidden;
 
-      background: #120d17;
+    background:#110c16;
 
-      transform:
-        translateY(0)
-        rotateZ(0deg);
+    transition:
+        transform .45s cubic-bezier(.16,1,.3,1),
+        box-shadow .45s ease;
+}
 
-      transition:
-        transform .6s cubic-bezier(.16,1,.3,1);
-    }
+.fashion-card:nth-child(2n){
+    transform:translateY(20px);
+}
 
-    .fashion-card:nth-child(2n) {
-      transform: translateY(22px);
-    }
-
-    .fashion-card:nth-child(3n) {
-      transform: translateY(-12px);
-    }
-
-    .fashion-card:hover {
-      transform:
-        translateY(-12px)
+.fashion-card:hover{
+    transform:
+        translateY(-10px)
         scale(1.025);
-    }
 
-    .fashion-card img {
-      width: 100%;
-      height: 100%;
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45);
+}
 
-      object-fit: cover;
+.fashion-card img{
+    height:100%;
 
-      transition:
-        transform 1s cubic-bezier(.16,1,.3,1);
-    }
+    object-fit:cover;
 
-    .fashion-card:hover img {
-      transform: scale(1.08);
-    }
+    transition:
+        transform .9s cubic-bezier(.16,1,.3,1);
+}
 
-    .fashion-card::after {
-      content: "";
+.fashion-card:hover img{
+    transform:scale(1.08);
+}
 
-      position: absolute;
-      inset: 0;
+.fashion-card::after{
+    content:"";
 
-      background:
+    position:absolute;
+
+    inset:0;
+
+    background:
         linear-gradient(
-          transparent 50%,
-          rgba(0,0,0,.8)
+            transparent 48%,
+            rgba(0,0,0,.78)
         );
-    }
+}
 
-    .fashion-info {
-      position: absolute;
+.fashion-info{
+    position:absolute;
 
-      left: 22px;
-      right: 22px;
-      bottom: 22px;
+    z-index:2;
 
-      z-index: 3;
-    }
+    left:20px;
+    right:20px;
+    bottom:20px;
+}
 
-    .fashion-info small {
-      color: var(--gold-light);
+.fashion-info small{
+    color:var(--gold2);
 
-      font-size: 8px;
+    font-size:8px;
 
-      text-transform: uppercase;
+    letter-spacing:.24em;
 
-      letter-spacing: .25em;
-    }
+    text-transform:uppercase;
+}
 
-    .fashion-info h3 {
-      margin-top: 6px;
+.fashion-info h3{
+    margin-top:6px;
 
-      font-family: var(--display);
+    font-family:var(--display);
 
-      font-size: 27px;
+    font-size:28px;
 
-      font-weight: 400;
-    }
+    font-weight:400;
+}
 
-    @keyframes clothingRun {
 
-      0% {
-        transform: translateX(0);
-      }
+/* Carousel buttons */
 
-      100% {
-        transform: translateX(-50%);
-      }
-    }
+.carousel-button{
+    position:absolute;
 
-    .carousel-fade-left,
-    .carousel-fade-right {
-      position: absolute;
+    top:50%;
 
-      top: 0;
-      bottom: 0;
+    z-index:10;
 
-      width: 12%;
+    width:48px;
+    height:48px;
 
-      z-index: 5;
+    transform:translateY(-50%);
 
-      pointer-events: none;
-    }
+    border-radius:50%;
 
-    .carousel-fade-left {
-      left: 0;
+    border:1px solid rgba(201,156,69,.55);
 
-      background:
+    color:white;
+
+    background:
+        rgba(10,7,14,.75);
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        box-shadow .35s ease;
+}
+
+.carousel-button:hover{
+    background:
         linear-gradient(
-          90deg,
-          var(--black-soft),
-          transparent
+            135deg,
+            var(--gold),
+            var(--gold3)
         );
-    }
 
-    .carousel-fade-right {
-      right: 0;
+    color:#100a04;
 
-      background:
+    box-shadow:
+        0 0 30px rgba(201,156,69,.25);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+}
+
+.carousel-prev{
+    left:0;
+}
+
+.carousel-next{
+    right:0;
+}
+
+.carousel-progress{
+    max-width:300px;
+
+    height:1px;
+
+    margin:5px auto 0;
+
+    background:rgba(255,255,255,.1);
+
+    overflow:hidden;
+}
+
+.carousel-progress-bar{
+    height:100%;
+
+    width:25%;
+
+    background:
         linear-gradient(
-          -90deg,
-          var(--black-soft),
-          transparent
+            90deg,
+            var(--gold),
+            var(--gold3)
         );
-    }
+
+    transition:
+        transform .6s ease;
+}
 
 
-    /* =====================================================
-       COLLECTION
-    ====================================================== */
+/* =========================================================
+   VIDEO SECTION
+========================================================= */
 
-    .collection {
-      background:
+.video-section{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(125,60,255,.08),
+            transparent 45%
+        ),
+        #08060c;
+}
+
+.video-container{
+    position:relative;
+
+    max-width:1450px;
+
+    height:min(72vh,700px);
+
+    min-height:480px;
+
+    margin:auto;
+
+    overflow:hidden;
+
+    background:#050408;
+}
+
+.video-container video{
+    height:100%;
+
+    object-fit:cover;
+
+    filter:
+        saturate(.7)
+        contrast(1.08)
+        brightness(.7);
+}
+
+.video-overlay{
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7,5,11,.55),
+            transparent,
+            rgba(7,5,11,.5)
+        );
+}
+
+.video-title{
+    font-family:var(--display);
+
+    font-size:
+        clamp(55px,8vw,120px);
+
+    line-height:.8;
+
+    font-weight:400;
+
+    letter-spacing:-.07em;
+}
+
+.video-title span{
+    display:block;
+
+    color:transparent;
+
+    -webkit-text-stroke:
+        1px rgba(255,255,255,.65);
+}
+
+.video-label{
+    margin-bottom:20px;
+
+    color:var(--gold2);
+
+    font-size:9px;
+
+    letter-spacing:.35em;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   COLLECTION
+========================================================= */
+
+.collection{
+    background:
         radial-gradient(
-          circle at 10% 50%,
-          rgba(125,66,232,.1),
-          transparent 25%
+            circle at 10% 50%,
+            rgba(125,60,255,.1),
+            transparent 28%
         );
-    }
+}
 
-    .products {
-      max-width: 1450px;
+.products{
+    max-width:1450px;
 
-      margin: auto;
+    margin:auto;
 
-      display: grid;
+    display:grid;
 
-      grid-template-columns:
+    grid-template-columns:
         repeat(3,1fr);
 
-      gap: 22px;
-    }
+    gap:20px;
+}
 
-    .product-card {
-      position: relative;
+.product-card{
+    position:relative;
 
-      overflow: hidden;
+    overflow:hidden;
 
-      background: #100b14;
+    background:#100b15;
 
-      transform-style: preserve-3d;
+    opacity:0;
 
-      transition:
-        transform .5s cubic-bezier(.16,1,.3,1);
+    transform:translateY(35px);
 
-      opacity: 0;
-      transform: translateY(35px);
-    }
-
-    .product-card.show {
-      opacity: 1;
-
-      transform:
-        translateY(0);
-    }
-
-    .product-image {
-      height: 570px;
-
-      object-fit: cover;
-
-      transition:
+    transition:
+        opacity .8s ease,
         transform .8s cubic-bezier(.16,1,.3,1);
-    }
+}
 
-    .product-card:hover .product-image {
-      transform: scale(1.07);
-    }
+.product-card.show{
+    opacity:1;
 
-    .product-overlay {
-      position: absolute;
+    transform:translateY(0);
+}
 
-      inset: 0;
+.product-image{
+    height:560px;
 
-      display: flex;
+    object-fit:cover;
 
-      flex-direction: column;
+    transition:
+        transform .9s cubic-bezier(.16,1,.3,1);
+}
 
-      justify-content: end;
+.product-card:hover .product-image{
+    transform:scale(1.07);
+}
 
-      padding: 28px;
+.product-overlay{
+    position:absolute;
 
-      background:
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:end;
+
+    padding:28px;
+
+    background:
         linear-gradient(
-          transparent 45%,
-          rgba(0,0,0,.82)
+            transparent 45%,
+            rgba(0,0,0,.85)
         );
-    }
+}
 
-    .product-category {
-      color: var(--gold-light);
+.product-category{
+    color:var(--gold2);
 
-      font-size: 8px;
+    font-size:8px;
 
-      text-transform: uppercase;
+    text-transform:uppercase;
 
-      letter-spacing: .28em;
-    }
+    letter-spacing:.28em;
+}
 
-    .product-name {
-      margin-top: 7px;
+.product-name{
+    margin-top:6px;
 
-      font-family: var(--display);
+    font-family:var(--display);
 
-      font-size: 32px;
+    font-size:31px;
 
-      font-weight: 400;
-    }
+    font-weight:400;
+}
 
-    .product-price {
-      margin-top: 8px;
+.product-price{
+    margin-top:7px;
 
-      color: rgba(255,255,255,.6);
+    font-size:11px;
 
-      font-size: 11px;
-    }
-
-
-    /* =====================================================
-       STORY
-    ====================================================== */
-
-    .story {
-      background: #08060b;
-    }
-
-    .story-grid {
-      max-width: 1450px;
-
-      margin: auto;
-
-      display: grid;
-
-      grid-template-columns:
-        .9fr 1.1fr;
-
-      gap: 100px;
-
-      align-items: center;
-    }
-
-    .story-image {
-      height: 650px;
-
-      object-fit: cover;
-    }
-
-    .story-copy h2 {
-      font-family: var(--display);
-
-      font-size:
-        clamp(58px,6vw,90px);
-
-      line-height: .82;
-
-      font-weight: 400;
-
-      letter-spacing: -.07em;
-
-      margin-bottom: 38px;
-    }
-
-    .story-copy h2 span {
-      color: var(--gold-light);
-    }
-
-    .story-copy p {
-      max-width: 550px;
-
-      color: var(--muted);
-
-      font-size: 13px;
-
-      line-height: 2;
-
-      margin-bottom: 22px;
-    }
+    color:rgba(255,255,255,.58);
+}
 
 
-    /* =====================================================
-       LOOKBOOK
-    ====================================================== */
+/* =========================================================
+   STORY
+========================================================= */
 
-    .lookbook {
-      background: var(--black-soft);
+.story{
+    background:#08060b;
+}
 
-      overflow: hidden;
-    }
+.story-grid{
+    max-width:1450px;
 
-    .lookbook-grid {
-      max-width: 1450px;
+    margin:auto;
 
-      margin: auto;
+    display:grid;
 
-      display: grid;
+    grid-template-columns:.9fr 1.1fr;
 
-      grid-template-columns:
+    gap:100px;
+
+    align-items:center;
+}
+
+.story-image{
+    height:650px;
+
+    object-fit:cover;
+}
+
+.story-copy h2{
+    font-family:var(--display);
+
+    font-size:
+        clamp(55px,6vw,90px);
+
+    line-height:.84;
+
+    font-weight:400;
+
+    letter-spacing:-.07em;
+
+    margin-bottom:38px;
+}
+
+.story-copy h2 span{
+    color:var(--gold2);
+}
+
+.story-copy p{
+    max-width:550px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:2;
+
+    margin-bottom:22px;
+}
+
+
+/* =========================================================
+   LOOKBOOK
+========================================================= */
+
+.lookbook{
+    background:var(--black2);
+
+    overflow:hidden;
+}
+
+.lookbook-grid{
+    max-width:1450px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
         repeat(4,1fr);
 
-      grid-auto-rows: 300px;
+    grid-auto-rows:300px;
 
-      gap: 12px;
-    }
+    gap:12px;
+}
 
-    .lookbook-item {
-      position: relative;
+.lookbook-item{
+    position:relative;
 
-      overflow: hidden;
-    }
+    overflow:hidden;
+}
 
-    .lookbook-item.large {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
+.lookbook-item.large{
+    grid-column:span 2;
+    grid-row:span 2;
+}
 
-    .lookbook-item img {
-      height: 100%;
+.lookbook-item img{
+    height:100%;
 
-      object-fit: cover;
+    object-fit:cover;
 
-      transition:
+    transition:
         transform 1s cubic-bezier(.16,1,.3,1);
-    }
+}
 
-    .lookbook-item:hover img {
-      transform: scale(1.08);
-    }
+.lookbook-item:hover img{
+    transform:scale(1.08);
+}
 
 
-    /* =====================================================
-       FINAL CTA
-    ====================================================== */
+/* =========================================================
+   CTA
+========================================================= */
 
-    .cta {
-      min-height: 620px;
+.cta{
+    min-height:620px;
 
-      display: flex;
+    display:flex;
 
-      align-items: center;
+    align-items:center;
 
-      justify-content: center;
+    justify-content:center;
 
-      text-align: center;
+    text-align:center;
 
-      overflow: hidden;
+    overflow:hidden;
 
-      background:
+    background:
         radial-gradient(
-          circle at center,
-          rgba(125,66,232,.3),
-          transparent 42%
+            circle at center,
+            rgba(125,60,255,.3),
+            transparent 42%
         ),
         #09060d;
-    }
+}
 
-    .cta::before {
-      content: "";
+.cta::before{
+    content:"";
 
-      position: absolute;
+    position:absolute;
 
-      width: 800px;
-      height: 800px;
+    width:800px;
+    height:800px;
 
-      border-radius: 50%;
+    border-radius:50%;
 
-      border:
+    border:
         1px solid
-        rgba(205,166,83,.12);
+        rgba(201,156,69,.12);
 
-      animation:
+    animation:
         rotateRing
         28s
         linear
         infinite;
-    }
+}
 
-    .cta-content {
-      position: relative;
+.cta-content{
+    position:relative;
 
-      z-index: 2;
-    }
+    z-index:2;
+}
 
-    .cta h2 {
-      font-family: var(--display);
+.cta h2{
+    font-family:var(--display);
 
-      font-size:
-        clamp(75px,10vw,150px);
+    font-size:
+        clamp(70px,10vw,150px);
 
-      line-height: .76;
+    line-height:.77;
 
-      font-weight: 400;
+    font-weight:400;
 
-      letter-spacing: -.08em;
+    letter-spacing:-.08em;
 
-      margin-bottom: 45px;
-    }
+    margin-bottom:45px;
+}
 
-    .cta h2 span {
-      display: block;
+.cta h2 span{
+    display:block;
 
-      color: transparent;
+    color:transparent;
 
-      -webkit-text-stroke:
-        1px
-        rgba(255,255,255,.58);
-    }
+    -webkit-text-stroke:
+        1px rgba(255,255,255,.6);
+}
 
 
-    /* =====================================================
-       FOOTER
-    ====================================================== */
+/* =========================================================
+   FOOTER
+========================================================= */
 
-    footer {
-      position: relative;
+footer{
+    position:relative;
 
-      z-index: 2;
+    z-index:2;
 
-      padding: 50px 5%;
+    padding:48px 5%;
 
-      border-top:
+    border-top:
         1px solid
-        var(--border);
+        rgba(255,255,255,.08);
 
-      background: #060408;
+    background:#060408;
+}
+
+.footer-inner{
+    max-width:1450px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:25px;
+}
+
+.footer-logo{
+    font-family:var(--display);
+
+    font-size:34px;
+
+    letter-spacing:-.07em;
+}
+
+.copyright{
+    color:#706b74;
+
+    font-size:9px;
+
+    letter-spacing:.16em;
+}
+
+.footer-links{
+    display:flex;
+
+    gap:24px;
+}
+
+.footer-links a{
+    color:#858088;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.15em;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px){
+
+    .nav-links{
+        display:none;
     }
 
-    .footer-inner {
-      max-width: 1450px;
-
-      margin: auto;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 25px;
+    .hero-inner{
+        grid-template-columns:1fr;
     }
 
-    .footer-logo {
-      font-family: var(--display);
-
-      font-size: 34px;
-
-      letter-spacing: -.07em;
+    .hero-image-wrap{
+        height:620px;
     }
 
-    .copyright {
-      color: #706b74;
-
-      font-size: 9px;
-
-      letter-spacing: .18em;
-    }
-
-    .footer-links {
-      display: flex;
-
-      gap: 25px;
-    }
-
-    .footer-links a {
-      color: #888;
-
-      font-size: 9px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .15em;
-    }
-
-
-    /* =====================================================
-       RESPONSIVE
-    ====================================================== */
-
-    @media (max-width: 1050px) {
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-image-wrap {
-        height: 650px;
-      }
-
-      .products {
+    .products{
         grid-template-columns:
-          repeat(2,1fr);
-      }
+            repeat(2,1fr);
+    }
 
-      .story-grid {
-        grid-template-columns: 1fr;
+    .story-grid{
+        grid-template-columns:1fr;
 
-        gap: 60px;
-      }
+        gap:60px;
+    }
 
-      .lookbook-grid {
+    .lookbook-grid{
         grid-template-columns:
-          repeat(2,1fr);
-      }
+            repeat(2,1fr);
     }
 
+}
 
-    @media (max-width: 650px) {
+@media(max-width:650px){
 
-      header {
-        padding: 18px 20px;
-      }
-
-      .brand {
-        font-size: 29px;
-      }
-
-      .nav-button {
-        padding: 10px 14px;
-      }
-
-      .hero-inner {
-        width: 90%;
-
-        padding-top: 70px;
-      }
-
-      .hero h1 {
-        font-size: 73px;
-      }
-
-      .hero-image-wrap {
-        height: 520px;
-      }
-
-      .hero-ring {
-        width: 170px;
-        height: 170px;
-
-        right: -55px;
-      }
-
-      section {
-        padding: 90px 5%;
-      }
-
-      .section-head {
-        display: block;
-      }
-
-      .section-description {
-        margin-top: 25px;
-      }
-
-      .fashion-card {
-        width: 230px;
-        height: 360px;
-      }
-
-      .products {
-        grid-template-columns: 1fr;
-      }
-
-      .product-image {
-        height: 600px;
-      }
-
-      .story-image {
-        height: 500px;
-      }
-
-      .lookbook-grid {
-        grid-template-columns: 1fr;
-
-        grid-auto-rows: 400px;
-      }
-
-      .lookbook-item.large {
-        grid-column: span 1;
-        grid-row: span 1;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-
-        text-align: center;
-      }
-
-      .footer-links {
-        justify-content: center;
-      }
+    header{
+        padding:18px 20px;
     }
 
-
-    /* =====================================================
-       REDUCED MOTION
-    ====================================================== */
-
-    @media (prefers-reduced-motion: reduce) {
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-
-        animation-iteration-count:
-          1 !important;
-
-        scroll-behavior: auto !important;
-      }
+    .brand{
+        font-size:30px;
     }
 
-  </style>
+    .hero-inner{
+        width:90%;
+    }
+
+    .hero h1{
+        font-size:72px;
+    }
+
+    .hero-image-wrap{
+        height:520px;
+    }
+
+    .hero-ring{
+        width:170px;
+        height:170px;
+
+        right:-55px;
+    }
+
+    section{
+        padding:90px 5%;
+    }
+
+    .section-head{
+        display:block;
+    }
+
+    .section-description{
+        margin-top:25px;
+    }
+
+    .fashion-carousel{
+        padding-left:38px;
+        padding-right:38px;
+    }
+
+    .fashion-card{
+        flex-basis:220px;
+        height:350px;
+    }
+
+    .carousel-button{
+        width:40px;
+        height:40px;
+    }
+
+    .carousel-prev{
+        left:2px;
+    }
+
+    .carousel-next{
+        right:2px;
+    }
+
+    .video-container{
+        min-height:430px;
+        height:60vh;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .product-image{
+        height:580px;
+    }
+
+    .story-image{
+        height:500px;
+    }
+
+    .lookbook-grid{
+        grid-template-columns:1fr;
+
+        grid-auto-rows:400px;
+    }
+
+    .lookbook-item.large{
+        grid-column:span 1;
+        grid-row:span 1;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+    .footer-links{
+        justify-content:center;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        scroll-behavior:auto !important;
+    }
+
+}
+
+</style>
 </head>
 
 
 <body>
 
 
-  <!-- =====================================================
-       GOLDEN BACKGROUND MOTION
-  ====================================================== -->
+<!-- =======================================================
+     BACKGROUND MOTION
+======================================================== -->
 
-  <div class="gold-particles">
+<div class="background-waves">
+
+    <div class="wave wave-one"></div>
+    <div class="wave wave-two"></div>
+    <div class="wave wave-three"></div>
+
+</div>
+
+<div class="gold-flare flare-one"></div>
+<div class="gold-flare flare-two"></div>
+
+<div class="gold-particles">
 
     <span></span>
     <span></span>
@@ -1699,17 +2030,14 @@
     <span></span>
     <span></span>
 
-  </div>
-
-  <div class="gold-flare flare-one"></div>
-  <div class="gold-flare flare-two"></div>
+</div>
 
 
-  <!-- =====================================================
-       LUXURY 3 SECOND LOADER
-  ====================================================== -->
+<!-- =======================================================
+     3 SECOND LUXURY LOADER
+======================================================== -->
 
-  <div class="luxury-loader">
+<div class="luxury-loader">
 
     <div class="loader-glow"></div>
 
@@ -1719,1039 +2047,1253 @@
 
     <div class="loader-center">
 
-      <div class="loader-overline">
-        Luxury Fashion House
-      </div>
+        <div class="loader-small">
+            Luxury Fashion House
+        </div>
 
-      <div class="loader-logo">
-        UrFirst
-      </div>
+        <div class="loader-logo">
+            UrFirst
+        </div>
 
-      <div class="loader-gold-line"></div>
-
-      <div class="loader-sub">
-        Wear Your First
-      </div>
+        <div class="loader-sub">
+            Wear Your First
+        </div>
 
     </div>
 
     <div class="loader-wipe"></div>
 
-  </div>
+</div>
 
 
-  <!-- =====================================================
-       NAVIGATION
-  ====================================================== -->
+<!-- =======================================================
+     HEADER
+======================================================== -->
 
-  <header>
+<header>
 
-    <nav>
+<nav>
 
-      <a href="#" class="brand">
+    <a href="#" class="brand">
         UrFirst
-      </a>
+    </a>
 
-      <div class="nav-links">
+    <div class="nav-links">
 
-        <a href="#collection">
-          Collection
+        <a href="#carousel">
+            Collection
         </a>
 
         <a href="#story">
-          Our Story
+            Our Story
         </a>
 
         <a href="#lookbook">
-          Lookbook
+            Lookbook
         </a>
-
-      </div>
-
-      <a
-        href="#collection"
-        class="nav-button"
-      >
-        Shop Collection
-      </a>
-
-    </nav>
-
-  </header>
-
-
-  <!-- =====================================================
-       HERO
-  ====================================================== -->
-
-  <main>
-
-    <section class="hero">
-
-      <div class="hero-inner">
-
-        <div class="hero-copy">
-
-          <div class="eyebrow">
-            Autumn / Winter 2026
-          </div>
-
-          <h1>
-            Wear
-            <span>Your First.</span>
-          </h1>
-
-          <p class="hero-description">
-            A contemporary expression of luxury fashion,
-            created for individuals who define their own
-            identity through style.
-          </p>
-
-          <div class="hero-actions">
-
-            <a
-              href="#collection"
-              class="btn btn-primary"
-            >
-              Explore Collection
-            </a>
-
-            <a
-              href="#story"
-              class="btn"
-            >
-              Discover UrFirst
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <div class="hero-image-wrap">
-
-          <img
-            class="hero-image"
-            src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=90"
-            alt="UrFirst luxury fashion model"
-          />
-
-          <div class="hero-ring"></div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         RUNNING CLOTHING CAROUSEL
-    ================================================== -->
-
-    <section class="carousel-section">
-
-      <div class="section-head">
-
-        <div>
-
-          <div class="section-number">
-            01 / THE EDIT
-          </div>
-
-          <h2 class="section-title">
-            Moving Luxury
-          </h2>
-
-        </div>
-
-        <p class="section-description">
-          A continuous visual movement through the
-          UrFirst collection.
-        </p>
-
-      </div>
-
-
-      <div class="fashion-carousel">
-
-        <div class="carousel-fade-left"></div>
-        <div class="carousel-fade-right"></div>
-
-
-        <div class="fashion-track">
-
-
-          <!-- SET 1 -->
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=90"
-              alt="Luxury purple dress"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 01
-              </small>
-
-              <h3>
-                Violet Form
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=800&q=90"
-              alt="Luxury clothing"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 02
-              </small>
-
-              <h3>
-                Golden Hour
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=90"
-              alt="Luxury fashion"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 03
-              </small>
-
-              <h3>
-                After Dark
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=90"
-              alt="Fashion model"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 04
-              </small>
-
-              <h3>
-                Noir Silk
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=90"
-              alt="Luxury fashion model"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 05
-              </small>
-
-              <h3>
-                Soft Gold
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=800&q=90"
-              alt="Fashion editorial"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 06
-              </small>
-
-              <h3>
-                Atelier One
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <!-- DUPLICATED SET FOR SEAMLESS LOOP -->
-
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=90"
-              alt="Luxury purple dress"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 01
-              </small>
-
-              <h3>
-                Violet Form
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=800&q=90"
-              alt="Luxury clothing"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 02
-              </small>
-
-              <h3>
-                Golden Hour
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=90"
-              alt="Luxury fashion"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 03
-              </small>
-
-              <h3>
-                After Dark
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=90"
-              alt="Fashion model"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 04
-              </small>
-
-              <h3>
-                Noir Silk
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=90"
-              alt="Luxury fashion model"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 05
-              </small>
-
-              <h3>
-                Soft Gold
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <div class="fashion-card">
-
-            <img
-              src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=800&q=90"
-              alt="Fashion editorial"
-            />
-
-            <div class="fashion-info">
-
-              <small>
-                Collection 06
-              </small>
-
-              <h3>
-                Atelier One
-              </h3>
-
-            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         COLLECTION
-    ================================================== -->
-
-    <section
-      class="collection"
-      id="collection"
-    >
-
-      <div class="section-head">
-
-        <div>
-
-          <div class="section-number">
-            02 / COLLECTION
-          </div>
-
-          <h2 class="section-title">
-            The First Edit
-          </h2>
-
-        </div>
-
-        <p class="section-description">
-          Sculptural silhouettes, refined textures and
-          understated details created for modern luxury.
-        </p>
-
-      </div>
-
-
-      <div class="products">
-
-
-        <article class="product-card">
-
-          <img
-            class="product-image"
-            src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=90"
-            alt="Violet luxury clothing"
-            loading="lazy"
-          />
-
-          <div class="product-overlay">
-
-            <div class="product-category">
-              Signature
-            </div>
-
-            <div class="product-name">
-              Violet Structure
-            </div>
-
-            <div class="product-price">
-              $129
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article class="product-card">
-
-          <img
-            class="product-image"
-            src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1000&q=90"
-            alt="Golden luxury clothing"
-            loading="lazy"
-          />
-
-          <div class="product-overlay">
-
-            <div class="product-category">
-              Atelier
-            </div>
-
-            <div class="product-name">
-              Golden Hour
-            </div>
-
-            <div class="product-price">
-              $189
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article class="product-card">
-
-          <img
-            class="product-image"
-            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=90"
-            alt="Dark luxury clothing"
-            loading="lazy"
-          />
-
-          <div class="product-overlay">
-
-            <div class="product-category">
-              Evening
-            </div>
-
-            <div class="product-name">
-              After Dark
-            </div>
-
-            <div class="product-price">
-              $159
-            </div>
-
-          </div>
-
-        </article>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         STORY
-    ================================================== -->
-
-    <section
-      class="story"
-      id="story"
-    >
-
-      <div class="story-grid">
-
-        <img
-          class="story-image"
-          src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1200&q=90"
-          alt="UrFirst fashion editorial"
-          loading="lazy"
-        />
-
-        <div class="story-copy">
-
-          <div class="section-number">
-            03 / OUR STORY
-          </div>
-
-          <h2>
-            Luxury begins
-            <span>with you.</span>
-          </h2>
-
-          <p>
-            UrFirst was created around a simple idea:
-            fashion should feel personal.
-          </p>
-
-          <p>
-            Every collection combines modern silhouettes,
-            rich textures and subtle luxury details to create
-            pieces that become part of your identity.
-          </p>
-
-          <a
-            href="#lookbook"
-            class="btn"
-          >
-            View Lookbook
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         LOOKBOOK
-    ================================================== -->
-
-    <section
-      class="lookbook"
-      id="lookbook"
-    >
-
-      <div class="section-head">
-
-        <div>
-
-          <div class="section-number">
-            04 / LOOKBOOK
-          </div>
-
-          <h2 class="section-title">
-            In Motion
-          </h2>
-
-        </div>
-
-        <p class="section-description">
-          A visual study of confidence, movement and
-          contemporary luxury.
-        </p>
-
-      </div>
-
-
-      <div class="lookbook-grid">
-
-
-        <div class="lookbook-item large">
-
-          <img
-            src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=90"
-            alt="Luxury fashion lookbook"
-            loading="lazy"
-          />
-
-        </div>
-
-
-        <div class="lookbook-item">
-
-          <img
-            src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=800&q=90"
-            alt="Luxury model"
-            loading="lazy"
-          />
-
-        </div>
-
-
-        <div class="lookbook-item">
-
-          <img
-            src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=800&q=90"
-            alt="Fashion model"
-            loading="lazy"
-          />
-
-        </div>
-
-
-        <div class="lookbook-item">
-
-          <img
-            src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=90"
-            alt="Luxury fashion"
-            loading="lazy"
-          />
-
-        </div>
-
-
-        <div class="lookbook-item">
-
-          <img
-            src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=90"
-            alt="Fashion portrait"
-            loading="lazy"
-          />
-
-        </div>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         CTA
-    ================================================== -->
-
-    <section class="cta">
-
-      <div class="cta-content">
-
-        <div class="section-number">
-          URFIRST
-        </div>
-
-        <h2>
-          Define
-          <span>Your First.</span>
-        </h2>
-
-        <a
-          href="#collection"
-          class="btn btn-primary"
-        >
-          Shop Now
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =====================================================
-       FOOTER
-  ====================================================== -->
-
-  <footer>
-
-    <div class="footer-inner">
-
-      <div class="footer-logo">
-        UrFirst
-      </div>
-
-      <div class="copyright">
-        © 2026 URFIRST — ALL RIGHTS RESERVED
-      </div>
-
-      <div class="footer-links">
-
-        <a href="#">
-          Instagram
-        </a>
-
-        <a href="#">
-          Pinterest
-        </a>
-
-      </div>
 
     </div>
 
-  </footer>
+    <a
+        href="#collection"
+        class="gold-button"
+    >
+        Shop Collection
+    </a>
+
+</nav>
+
+</header>
 
 
-  <!-- =====================================================
-       JAVASCRIPT
-  ====================================================== -->
+<!-- =======================================================
+     HERO
+======================================================== -->
 
-  <script>
+<main>
+
+<section class="hero">
+
+<div class="hero-inner">
 
 
-    /* =====================================================
-       PRODUCT SCROLL REVEAL
-    ====================================================== */
+<div class="hero-copy">
 
-    const productCards =
-      document.querySelectorAll(".product-card");
+    <div class="eyebrow">
+        Autumn / Winter 2026
+    </div>
 
-    const revealObserver =
-      new IntersectionObserver(
+    <h1>
+        Wear
+        <span>Your First.</span>
+    </h1>
+
+    <p class="hero-description">
+        Contemporary silhouettes, refined textures and
+        effortless luxury designed for people who create
+        their own identity.
+    </p>
+
+    <div class="hero-actions">
+
+        <a
+            href="#carousel"
+            class="gold-button"
+        >
+            Explore Collection
+        </a>
+
+        <a
+            href="#story"
+            class="gold-button"
+        >
+            Discover UrFirst
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="hero-image-wrap">
+
+    <img
+        class="hero-image"
+        src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=90"
+        alt="UrFirst luxury fashion"
+    >
+
+    <div class="hero-ring"></div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     CLOTHING CAROUSEL
+======================================================== -->
+
+<section
+    class="carousel-section"
+    id="carousel"
+>
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-number">
+            01 / THE EDIT
+        </div>
+
+        <h2 class="section-title">
+            Moving Luxury
+        </h2>
+
+    </div>
+
+    <p class="section-description">
+        Explore selected UrFirst silhouettes through
+        a continuously moving visual collection.
+    </p>
+
+</div>
+
+
+<div class="carousel-wrapper">
+
+    <button
+        class="carousel-button carousel-prev"
+        aria-label="Previous clothing"
+    >
+        ←
+    </button>
+
+    <div class="fashion-carousel">
+
+        <div
+            class="fashion-track"
+            id="fashionTrack"
+        >
+
+
+            <div class="fashion-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=90"
+                    alt="Simple fashion dress"
+                >
+
+                <div class="fashion-info">
+
+                    <small>
+                        Look 01
+                    </small>
+
+                    <h3>
+                        Violet Form
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="fashion-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=800&q=90"
+                    alt="Simple clothing"
+                >
+
+                <div class="fashion-info">
+
+                    <small>
+                        Look 02
+                    </small>
+
+                    <h3>
+                        Golden Hour
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="fashion-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=90"
+                    alt="Minimal fashion"
+                >
+
+                <div class="fashion-info">
+
+                    <small>
+                        Look 03
+                    </small>
+
+                    <h3>
+                        After Dark
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="fashion-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=90"
+                    alt="Minimal luxury clothing"
+                >
+
+                <div class="fashion-info">
+
+                    <small>
+                        Look 04
+                    </small>
+
+                    <h3>
+                        Noir Silk
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="fashion-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=90"
+                    alt="Simple luxury fashion"
+                >
+
+                <div class="fashion-info">
+
+                    <small>
+                        Look 05
+                    </small>
+
+                    <h3>
+                        Soft Gold
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="fashion-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=800&q=90"
+                    alt="Fashion editorial"
+                >
+
+                <div class="fashion-info">
+
+                    <small>
+                        Look 06
+                    </small>
+
+                    <h3>
+                        Atelier
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="carousel-button carousel-next"
+        aria-label="Next clothing"
+    >
+        →
+    </button>
+
+
+    <div class="carousel-progress">
+
+        <div
+            class="carousel-progress-bar"
+            id="carouselProgress"
+        ></div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     FASHION VIDEO
+======================================================== -->
+
+<section class="video-section">
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-number">
+            02 / MOTION
+        </div>
+
+        <h2 class="section-title">
+            In Motion
+        </h2>
+
+    </div>
+
+    <p class="section-description">
+        Fashion is not static. Experience the collection
+        through movement, texture and light.
+    </p>
+
+</div>
+
+
+<div class="video-container">
+
+    <!-- Replace this URL with your own fashion MP4 -->
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1600&q=90"
+    >
+
+        <source
+            src="https://cdn.coverr.co/videos/coverr-a-woman-in-a-fashion-store-1577/1080p.mp4"
+            type="video/mp4"
+        >
+
+    </video>
+
+
+    <div class="video-overlay">
+
+        <div>
+
+            <div class="video-label">
+                URFIRST / 2026
+            </div>
+
+            <div class="video-title">
+                Designed
+                <span>To Move.</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     COLLECTION
+======================================================== -->
+
+<section
+    class="collection"
+    id="collection"
+>
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-number">
+            03 / COLLECTION
+        </div>
+
+        <h2 class="section-title">
+            The First Edit
+        </h2>
+
+    </div>
+
+    <p class="section-description">
+        Clean silhouettes, modern proportions and
+        subtle luxury details.
+    </p>
+
+</div>
+
+
+<div class="products">
+
+
+<article class="product-card">
+
+    <img
+        class="product-image"
+        src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=90"
+        alt="Violet Structure"
+        loading="lazy"
+    >
+
+    <div class="product-overlay">
+
+        <div class="product-category">
+            Signature
+        </div>
+
+        <div class="product-name">
+            Violet Structure
+        </div>
+
+        <div class="product-price">
+            $129
+        </div>
+
+    </div>
+
+</article>
+
+
+<article class="product-card">
+
+    <img
+        class="product-image"
+        src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1000&q=90"
+        alt="Golden Hour"
+        loading="lazy"
+    >
+
+    <div class="product-overlay">
+
+        <div class="product-category">
+            Atelier
+        </div>
+
+        <div class="product-name">
+            Golden Hour
+        </div>
+
+        <div class="product-price">
+            $189
+        </div>
+
+    </div>
+
+</article>
+
+
+<article class="product-card">
+
+    <img
+        class="product-image"
+        src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=90"
+        alt="After Dark"
+        loading="lazy"
+    >
+
+    <div class="product-overlay">
+
+        <div class="product-category">
+            Evening
+        </div>
+
+        <div class="product-name">
+            After Dark
+        </div>
+
+        <div class="product-price">
+            $159
+        </div>
+
+    </div>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     STORY
+======================================================== -->
+
+<section
+    class="story"
+    id="story"
+>
+
+<div class="story-grid">
+
+
+<img
+    class="story-image"
+    src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1200&q=90"
+    alt="UrFirst fashion editorial"
+    loading="lazy"
+>
+
+
+<div class="story-copy">
+
+    <div class="section-number">
+        04 / OUR STORY
+    </div>
+
+    <h2>
+        Luxury begins
+        <span>with you.</span>
+    </h2>
+
+    <p>
+        UrFirst was created around a simple idea:
+        fashion should feel personal.
+    </p>
+
+    <p>
+        Every piece combines clean modern design,
+        carefully selected textures and understated
+        luxury details.
+    </p>
+
+    <a
+        href="#lookbook"
+        class="gold-button"
+    >
+        View Lookbook
+    </a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     LOOKBOOK
+======================================================== -->
+
+<section
+    class="lookbook"
+    id="lookbook"
+>
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-number">
+            05 / LOOKBOOK
+        </div>
+
+        <h2 class="section-title">
+            Visual Identity
+        </h2>
+
+    </div>
+
+    <p class="section-description">
+        A visual language built around confidence,
+        movement and modern elegance.
+    </p>
+
+</div>
+
+
+<div class="lookbook-grid">
+
+
+<div class="lookbook-item large">
+
+    <img
+        src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=90"
+        alt="Luxury fashion"
+        loading="lazy"
+    >
+
+</div>
+
+
+<div class="lookbook-item">
+
+    <img
+        src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=800&q=90"
+        alt="Fashion model"
+        loading="lazy"
+    >
+
+</div>
+
+
+<div class="lookbook-item">
+
+    <img
+        src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=800&q=90"
+        alt="Fashion clothing"
+        loading="lazy"
+    >
+
+</div>
+
+
+<div class="lookbook-item">
+
+    <img
+        src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=90"
+        alt="Luxury outfit"
+        loading="lazy"
+    >
+
+</div>
+
+
+<div class="lookbook-item">
+
+    <img
+        src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=90"
+        alt="Fashion portrait"
+        loading="lazy"
+    >
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     FINAL CTA
+======================================================== -->
+
+<section class="cta">
+
+<div class="cta-content">
+
+    <div class="section-number">
+        URFIRST
+    </div>
+
+    <h2>
+        Define
+        <span>Your First.</span>
+    </h2>
+
+    <a
+        href="#collection"
+        class="gold-button"
+    >
+        Shop Now
+    </a>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================== -->
+
+<footer>
+
+<div class="footer-inner">
+
+    <div class="footer-logo">
+        UrFirst
+    </div>
+
+    <div class="copyright">
+        © 2026 URFIRST — ALL RIGHTS RESERVED
+    </div>
+
+    <div class="footer-links">
+
+        <a href="#">
+            Instagram
+        </a>
+
+        <a href="#">
+            Pinterest
+        </a>
+
+    </div>
+
+</div>
+
+</footer>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================== -->
+
+<script>
+
+
+/* =========================================================
+   CREATE RANDOM GOLD PARTICLES
+========================================================= */
+
+const particleContainer =
+    document.querySelector(".gold-particles");
+
+for(let i = 0; i < 18; i++){
+
+    const particle =
+        document.createElement("span");
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.top =
+        Math.random() * 100 + "%";
+
+    particle.style.setProperty(
+        "--duration",
+        (3 + Math.random() * 5) + "s"
+    );
+
+    particle.style.setProperty(
+        "--delay",
+        (-Math.random() * 6) + "s"
+    );
+
+    const size =
+        1 + Math.random() * 2;
+
+    particle.style.width =
+        size + "px";
+
+    particle.style.height =
+        size + "px";
+
+    particleContainer.appendChild(
+        particle
+    );
+}
+
+
+/* =========================================================
+   PRODUCT REVEAL
+========================================================= */
+
+const products =
+    document.querySelectorAll(".product-card");
+
+const productObserver =
+    new IntersectionObserver(
         entries => {
 
-          entries.forEach((entry, index) => {
+            entries.forEach((entry,index)=>{
 
-            if (entry.isIntersecting) {
+                if(entry.isIntersecting){
 
-              setTimeout(() => {
+                    setTimeout(()=>{
 
-                entry.target.classList.add("show");
+                        entry.target.classList.add(
+                            "show"
+                        );
 
-              }, index * 150);
+                    },index * 130);
 
-              revealObserver.unobserve(
-                entry.target
-              );
-            }
+                    productObserver.unobserve(
+                        entry.target
+                    );
+                }
 
-          });
+            });
 
         },
         {
-          threshold: .15
+            threshold:.15
         }
-      );
+    );
+
+products.forEach(card=>{
+    productObserver.observe(card);
+});
 
 
-    productCards.forEach(card => {
-      revealObserver.observe(card);
-    });
+/* =========================================================
+   CAROUSEL
+========================================================= */
+
+const track =
+    document.getElementById(
+        "fashionTrack"
+    );
+
+const previous =
+    document.querySelector(
+        ".carousel-prev"
+    );
+
+const next =
+    document.querySelector(
+        ".carousel-next"
+    );
+
+const progress =
+    document.getElementById(
+        "carouselProgress"
+    );
+
+const cards =
+    document.querySelectorAll(
+        ".fashion-card"
+    );
+
+let carouselIndex = 0;
+
+let cardWidth = 280;
+
+function updateCardWidth(){
+
+    if(window.innerWidth <= 650){
+        cardWidth = 240;
+    }
+    else{
+        cardWidth = 280;
+    }
+}
+
+updateCardWidth();
+
+window.addEventListener(
+    "resize",
+    updateCardWidth
+);
 
 
-    /* =====================================================
-       3D PRODUCT MOTION
-    ====================================================== */
+function moveCarousel(){
 
-    productCards.forEach(card => {
+    const gap = 20;
 
-      card.addEventListener(
-        "mousemove",
-        event => {
+    const amount =
+        carouselIndex *
+        (cardWidth + gap);
 
-          const rect =
-            card.getBoundingClientRect();
+    track.style.transform =
+        `translateX(-${amount}px)`;
 
-          const x =
-            event.clientX - rect.left;
+    const total =
+        Math.max(cards.length - 3,1);
 
-          const y =
-            event.clientY - rect.top;
+    const percentage =
+        Math.min(
+            100,
+            ((carouselIndex / total) * 100)
+        );
 
-          const rotateX =
-            ((y / rect.height) - .5) * -7;
+    progress.style.width =
+        Math.max(25,percentage) + "%";
+}
 
-          const rotateY =
-            ((x / rect.width) - .5) * 7;
 
-          card.style.transform =
-            `
-              translateY(-5px)
-              rotateX(${rotateX}deg)
-              rotateY(${rotateY}deg)
-            `;
+next.addEventListener(
+    "click",
+    event => {
 
+        createRipple(
+            next,
+            event
+        );
+
+        carouselIndex++;
+
+        const max =
+            Math.max(
+                cards.length - 3,
+                0
+            );
+
+        if(carouselIndex > max){
+            carouselIndex = 0;
         }
-      );
+
+        moveCarousel();
+    }
+);
 
 
-      card.addEventListener(
+previous.addEventListener(
+    "click",
+    event => {
+
+        createRipple(
+            previous,
+            event
+        );
+
+        carouselIndex--;
+
+        const max =
+            Math.max(
+                cards.length - 3,
+                0
+            );
+
+        if(carouselIndex < 0){
+            carouselIndex = max;
+        }
+
+        moveCarousel();
+    }
+);
+
+
+/* =========================================================
+   AUTOMATIC CAROUSEL
+========================================================= */
+
+let autoCarousel =
+    setInterval(()=>{
+
+        carouselIndex++;
+
+        const max =
+            Math.max(
+                cards.length - 3,
+                0
+            );
+
+        if(carouselIndex > max){
+            carouselIndex = 0;
+        }
+
+        moveCarousel();
+
+    },4500);
+
+
+/* Pause automatic motion while interacting */
+
+document
+    .querySelector(".carousel-wrapper")
+    .addEventListener(
+        "mouseenter",
+        ()=>{
+            clearInterval(
+                autoCarousel
+            );
+        }
+    );
+
+document
+    .querySelector(".carousel-wrapper")
+    .addEventListener(
         "mouseleave",
-        () => {
+        ()=>{
 
-          card.style.transform =
-            "translateY(0) rotateX(0) rotateY(0)";
+            clearInterval(
+                autoCarousel
+            );
 
-        }
-      );
+            autoCarousel =
+                setInterval(()=>{
 
-    });
+                    carouselIndex++;
 
+                    const max =
+                        Math.max(
+                            cards.length - 3,
+                            0
+                        );
 
-    /* =====================================================
-       HERO PARALLAX
-    ====================================================== */
+                    if(carouselIndex > max){
+                        carouselIndex = 0;
+                    }
 
-    const heroImage =
-      document.querySelector(".hero-image");
+                    moveCarousel();
 
-    window.addEventListener(
-      "scroll",
-      () => {
-
-        const scroll =
-          window.scrollY;
-
-        if (
-          scroll <
-          window.innerHeight
-        ) {
-
-          heroImage.style.transform =
-            `
-              scale(1.02)
-              translateY(${scroll * .035}px)
-            `;
+                },4500);
 
         }
-
-      },
-      {
-        passive: true
-      }
     );
 
 
-    /* =====================================================
-       MAGNETIC BUTTON
-    ====================================================== */
+/* =========================================================
+   GOLD RIPPLE EFFECT FOR ALL BUTTONS
+========================================================= */
 
-    document.querySelectorAll(".btn")
-      .forEach(button => {
+function createRipple(
+    button,
+    event
+){
 
-        button.addEventListener(
-          "mousemove",
-          event => {
+    const rect =
+        button.getBoundingClientRect();
 
-            const rect =
-              button.getBoundingClientRect();
-
-            const x =
-              event.clientX -
-              rect.left -
-              rect.width / 2;
-
-            const y =
-              event.clientY -
-              rect.top -
-              rect.height / 2;
-
-            button.style.transform =
-              `
-                translate(
-                  ${x * .07}px,
-                  ${y * .07}px
-                )
-              `;
-
-          }
+    const ripple =
+        document.createElement(
+            "span"
         );
 
+    ripple.className =
+        "button-ripple";
 
-        button.addEventListener(
-          "mouseleave",
-          () => {
+    const x =
+        event.clientX -
+        rect.left;
 
-            button.style.transform =
-              "translate(0,0)";
+    const y =
+        event.clientY -
+        rect.top;
 
-          }
+    ripple.style.left =
+        x + "px";
+
+    ripple.style.top =
+        y + "px";
+
+    button.appendChild(
+        ripple
+    );
+
+    button.classList.add(
+        "active"
+    );
+
+    setTimeout(()=>{
+
+        ripple.remove();
+
+        button.classList.remove(
+            "active"
         );
 
-      });
+    },750);
+}
 
 
-    /* =====================================================
-       SMOOTH ANCHOR
-    ====================================================== */
+/* Mouse + touch interaction */
 
-    document.querySelectorAll(
-      'a[href^="#"]'
-    ).forEach(link => {
+document
+    .querySelectorAll(".gold-button")
+    .forEach(button=>{
 
-      link.addEventListener(
-        "click",
-        event => {
+        button.addEventListener(
+            "click",
+            event=>{
 
-          const target =
-            document.querySelector(
-              link.getAttribute("href")
-            );
+                createRipple(
+                    button,
+                    event
+                );
 
-          if (target) {
-
-            event.preventDefault();
-
-            target.scrollIntoView({
-              behavior: "smooth"
-            });
-
-          }
-
-        }
-      );
+            }
+        );
 
     });
 
 
-    /* =====================================================
-       RANDOM GOLDEN MICRO SPARKS
-    ====================================================== */
+/* =========================================================
+   SMOOTH NAVIGATION
+========================================================= */
 
-    const particleContainer =
-      document.querySelector(
-        ".gold-particles"
-      );
+document
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
+    .forEach(link=>{
 
-    for (let i = 0; i < 12; i++) {
+        link.addEventListener(
+            "click",
+            event=>{
 
-      const spark =
-        document.createElement("span");
+                const target =
+                    document.querySelector(
+                        link.getAttribute(
+                            "href"
+                        )
+                    );
 
-      spark.style.left =
-        Math.random() * 100 + "%";
+                if(target){
 
-      spark.style.top =
-        Math.random() * 100 + "%";
+                    event.preventDefault();
 
-      spark.style.setProperty(
-        "--duration",
-        (3 + Math.random() * 4) + "s"
-      );
+                    target.scrollIntoView({
+                        behavior:"smooth"
+                    });
 
-      spark.style.setProperty(
-        "--delay",
-        (-Math.random() * 5) + "s"
-      );
+                }
 
-      const size =
-        1 + Math.random() * 2;
+            }
+        );
 
-      spark.style.width =
-        size + "px";
+    });
 
-      spark.style.height =
-        size + "px";
 
-      particleContainer.appendChild(
-        spark
-      );
+/* =========================================================
+   HERO PARALLAX
+========================================================= */
 
+const heroImage =
+    document.querySelector(
+        ".hero-image"
+    );
+
+window.addEventListener(
+    "scroll",
+    ()=>{
+
+        const scroll =
+            window.scrollY;
+
+        if(
+            scroll <
+            window.innerHeight
+        ){
+
+            heroImage.style.transform =
+                `scale(1.02)
+                 translateY(${scroll * .035}px)`;
+
+        }
+
+    },
+    {
+        passive:true
     }
+);
 
 
-  </script>
+/* =========================================================
+   PRODUCT 3D EFFECT
+========================================================= */
+
+products.forEach(card=>{
+
+    card.addEventListener(
+        "mousemove",
+        event=>{
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                event.clientX -
+                rect.left;
+
+            const y =
+                event.clientY -
+                rect.top;
+
+            const rotateX =
+                ((y / rect.height)-.5)
+                * -5;
+
+            const rotateY =
+                ((x / rect.width)-.5)
+                * 5;
+
+            card.style.transform =
+                `
+                translateY(-4px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                `;
+
+        }
+    );
+
+    card.addEventListener(
+        "mouseleave",
+        ()=>{
+
+            card.style.transform =
+                "translateY(0) rotateX(0) rotateY(0)";
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   VIDEO FALLBACK
+========================================================= */
+
+const fashionVideo =
+    document.querySelector(
+        ".video-container video"
+    );
+
+fashionVideo.addEventListener(
+    "error",
+    ()=>{
+        fashionVideo.style.display =
+            "none";
+    }
+);
+
+</script>
 
 </body>
 </html>
