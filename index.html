@@ -1,1303 +1,1523 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>VÉLORA — Luxury Fashion</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
-    --violet:#16051f;
-    --violet2:#321052;
-    --purple:#6f28a8;
-    --gold:#d8a63c;
-    --gold2:#ffe7a0;
-    --white:#fffaf2;
-    --muted:#cfc5d8;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Poppins',sans-serif;
-    background:
-        radial-gradient(circle at 15% 20%,rgba(123,50,180,.25),transparent 30%),
-        radial-gradient(circle at 85% 70%,rgba(216,166,60,.12),transparent 30%),
-        #0c0312;
-    color:white;
-    overflow-x:hidden;
-}
-
-/* ================= CURSOR ================= */
-
-.cursor{
-    width:18px;
-    height:18px;
-    border:1px solid #e6b84e;
-    border-radius:50%;
-    position:fixed;
-    pointer-events:none;
-    z-index:9999;
-    transform:translate(-50%,-50%);
-    transition:.08s linear;
-    mix-blend-mode:difference;
-}
-
-.cursor-dot{
-    width:5px;
-    height:5px;
-    background:#e6b84e;
-    border-radius:50%;
-    position:fixed;
-    pointer-events:none;
-    z-index:10000;
-    transform:translate(-50%,-50%);
-}
-
-/* ================= NAVBAR ================= */
-
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:80px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 7%;
-    z-index:1000;
-    background:rgba(12,3,18,.55);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.logo{
-    font-family:'Playfair Display',serif;
-    font-size:28px;
-    letter-spacing:5px;
-    background:linear-gradient(90deg,#fff,#d6a438,#fff0b2);
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.logo span{
-    font-size:10px;
-    display:block;
-    letter-spacing:7px;
-    text-align:center;
-    margin-top:-5px;
-    font-family:Poppins;
-}
-
-nav ul{
-    display:flex;
-    gap:38px;
-    list-style:none;
-}
-
-nav ul a{
-    color:#eee;
-    text-decoration:none;
-    font-size:13px;
-    position:relative;
-}
-
-nav ul a::after{
-    content:'';
-    position:absolute;
-    left:0;
-    bottom:-7px;
-    width:0;
-    height:1px;
-    background:#e1b348;
-    transition:.4s;
-}
-
-nav ul a:hover::after{
-    width:100%;
-}
-
-.nav-icons{
-    display:flex;
-    gap:15px;
-}
-
-.nav-icon{
-    width:38px;
-    height:38px;
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    transition:.3s;
-}
-
-.nav-icon:hover{
-    border-color:#dcae45;
-    transform:translateY(-3px);
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    min-height:100vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    padding:130px 7% 80px;
-    overflow:hidden;
-}
-
-.hero-content{
-    width:50%;
-    z-index:3;
-}
-
-.eyebrow{
-    color:#dfb34e;
-    letter-spacing:5px;
-    font-size:11px;
-    margin-bottom:20px;
-}
-
-.hero h1{
-    font-family:'Playfair Display',serif;
-    font-size:clamp(60px,8vw,125px);
-    line-height:.88;
-    font-weight:500;
-}
-
-.hero h1 span{
-    display:block;
-    background:linear-gradient(
-        110deg,
-        #fff 10%,
-        #e3b94e 35%,
-        #fff4bd 50%,
-        #b87912 70%,
-        #fff
-    );
-    background-size:250% auto;
-    -webkit-background-clip:text;
-    color:transparent;
-    animation:goldShine 5s linear infinite;
-}
-
-@keyframes goldShine{
-    to{background-position:250% center}
-}
-
-.hero p{
-    max-width:480px;
-    color:#cfc4d5;
-    margin:30px 0;
-    line-height:1.8;
-    font-size:14px;
-}
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    gap:12px;
-    padding:15px 28px;
-    border-radius:40px;
-    text-decoration:none;
-    color:#16051f;
-    background:linear-gradient(110deg,#9e6815,#ffe28a,#bd801d,#ffeaa9);
-    background-size:300%;
-    animation:buttonGold 5s infinite linear;
-    font-size:12px;
-    font-weight:600;
-    transition:.4s;
-    box-shadow:0 10px 35px rgba(213,165,57,.15);
-}
-
-@keyframes buttonGold{
-    0%{background-position:0}
-    100%{background-position:300%}
-}
-
-.btn:hover{
-    transform:translateY(-5px) scale(1.03);
-    box-shadow:0 20px 50px rgba(220,170,55,.25);
-}
-
-.btn-outline{
-    margin-left:12px;
-    background:transparent;
-    color:white;
-    border:1px solid rgba(255,255,255,.25);
-    animation:none;
-}
-
-/* ================= 3D MODEL ================= */
-
-.hero-visual{
-    position:absolute;
-    width:55%;
-    height:90%;
-    right:0;
-    top:10%;
-    perspective:1200px;
-}
-
-.model{
-    position:absolute;
-    width:420px;
-    height:600px;
-    right:12%;
-    top:8%;
-    transform-style:preserve-3d;
-    animation:floatModel 6s ease-in-out infinite;
-}
-
-@keyframes floatModel{
-    0%,100%{
-        transform:translateY(0) rotateY(-8deg) rotateX(2deg);
-    }
-    50%{
-        transform:translateY(-25px) rotateY(8deg) rotateX(-2deg);
-    }
-}
-
-.model-body{
-    position:absolute;
-    width:280px;
-    height:440px;
-    left:70px;
-    top:80px;
-    border-radius:50% 50% 25% 25%;
-    background:
-        linear-gradient(110deg,
-        #16051f 10%,
-        #5b2182 40%,
-        #a95cce 53%,
-        #321047 75%,
-        #0e0315);
-    box-shadow:
-        -30px 30px 70px rgba(0,0,0,.8),
-        20px 10px 50px rgba(150,70,190,.25),
-        inset 15px 0 30px rgba(255,255,255,.08);
-    transform:rotateY(-12deg);
-}
-
-.model-body::before{
-    content:'';
-    position:absolute;
-    width:100px;
-    height:120px;
-    background:#100316;
-    border-radius:0 0 50% 50%;
-    left:90px;
-    top:-20px;
-}
-
-.model-body::after{
-    content:'V';
-    position:absolute;
-    left:80px;
-    top:170px;
-    font-family:'Playfair Display';
-    font-size:130px;
-    color:rgba(239,195,87,.35);
-    text-shadow:0 0 40px rgba(240,190,65,.3);
-}
-
-.gold-ring{
-    position:absolute;
-    width:430px;
-    height:430px;
-    border:1px solid rgba(222,174,65,.35);
-    border-radius:50%;
-    top:120px;
-    right:0;
-    transform:rotateX(65deg) rotateZ(15deg);
-    animation:spinRing 14s linear infinite;
-}
-
-.gold-ring::before{
-    content:'';
-    position:absolute;
-    inset:20px;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:50%;
-}
-
-@keyframes spinRing{
-    from{transform:rotateX(65deg) rotateZ(0)}
-    to{transform:rotateX(65deg) rotateZ(360deg)}
-}
-
-/* ================= PARTICLES ================= */
-
-.particle{
-    position:absolute;
-    width:3px;
-    height:3px;
-    border-radius:50%;
-    background:#e5b74e;
-    box-shadow:0 0 15px #e5b74e;
-    animation:particleFloat linear infinite;
-}
-
-@keyframes particleFloat{
-    0%{
-        transform:translateY(100vh) scale(0);
-        opacity:0;
-    }
-    20%{opacity:1}
-    80%{opacity:1}
-    100%{
-        transform:translateY(-100px) scale(1.5);
-        opacity:0;
-    }
-}
-
-/* ================= SECTION ================= */
-
-section{
-    padding:120px 7%;
-    position:relative;
-}
-
-.section-head{
-    text-align:center;
-    margin-bottom:70px;
-}
-
-.section-head small{
-    color:#d8aa3f;
-    letter-spacing:4px;
-    font-size:10px;
-}
-
-.section-head h2{
-    font-family:'Playfair Display';
-    font-size:55px;
-    font-weight:500;
-    margin-top:10px;
-}
-
-/* ================= PRODUCTS ================= */
-
-.products{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:28px;
-    perspective:1200px;
-}
-
-.card{
-    position:relative;
-    height:520px;
-    border-radius:25px;
-    overflow:hidden;
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.08),
-        rgba(255,255,255,.02)
-    );
-    border:1px solid rgba(255,255,255,.1);
-    transform-style:preserve-3d;
-    transition:transform .2s ease, box-shadow .4s;
-}
-
-.card:hover{
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.45),
-        0 0 50px rgba(137,61,181,.12);
-}
-
-.product-image{
-    height:72%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-    overflow:hidden;
-}
-
-.product-image::before{
-    content:'';
-    width:260px;
-    height:260px;
-    border-radius:50%;
-    background:radial-gradient(circle,#8f47b6,transparent 65%);
-    position:absolute;
-    filter:blur(15px);
-}
-
-.dress{
-    width:180px;
-    height:300px;
-    border-radius:40% 40% 15% 15%;
-    background:linear-gradient(
-        100deg,
-        #21062d,
-        #9e48c5,
-        #4b1269,
-        #15031e
-    );
-    box-shadow:20px 20px 40px rgba(0,0,0,.5);
-    transform:rotate(-5deg);
-    transition:.5s;
-    position:relative;
-    z-index:2;
-}
-
-.card:hover .dress{
-    transform:rotate(3deg) scale(1.06) translateZ(30px);
-}
-
-.dress::after{
-    content:'';
-    position:absolute;
-    width:70px;
-    height:100px;
-    left:55px;
-    top:-45px;
-    background:#321044;
-    border-radius:0 0 50% 50%;
-}
-
-.dress.gold{
-    background:linear-gradient(
-        100deg,
-        #4a2807,
-        #f0c454,
-        #fff0a7,
-        #9c6919,
-        #3b2006
-    );
-}
-
-.dress.black{
-    background:linear-gradient(
-        100deg,
-        #07030b,
-        #3b2247,
-        #8c4a9e,
-        #100511
-    );
-}
-
-.card-info{
-    padding:22px 25px;
-}
-
-.card-info h3{
-    font-family:'Playfair Display';
-    font-size:23px;
-}
-
-.card-info p{
-    color:#a99caf;
-    font-size:12px;
-    margin-top:5px;
-}
-
-.price{
-    float:right;
-    color:#e4b64e;
-}
-
-/* ================= COLLECTION ================= */
-
-.collection{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-}
-
-.collection-box{
-    min-height:500px;
-    border-radius:30px;
-    padding:50px;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    position:relative;
-    overflow:hidden;
-    background:
-        linear-gradient(transparent 20%,rgba(10,2,14,.95)),
-        radial-gradient(circle at 50% 20%,#8543a7,#19051f 70%);
-    border:1px solid rgba(255,255,255,.1);
-}
-
-.collection-box:nth-child(2){
-    background:
-        linear-gradient(transparent 20%,rgba(10,2,14,.95)),
-        radial-gradient(circle at 50% 20%,#b07c22,#1b0c03 70%);
-}
-
-.collection-box::before{
-    content:'';
-    position:absolute;
-    width:280px;
-    height:450px;
-    top:30px;
-    left:50%;
-    transform:translateX(-50%);
-    background:linear-gradient(
-        100deg,
-        #19051f,
-        #7d3a9d,
-        #2a0b39
-    );
-    clip-path:polygon(
-        25% 0,
-        75% 0,
-        100% 25%,
-        82% 100%,
-        18% 100%,
-        0 25%
-    );
-    transition:.6s;
-}
-
-.collection-box:nth-child(2)::before{
-    background:linear-gradient(
-        100deg,
-        #5a350b,
-        #e6b84d,
-        #fff0aa,
-        #79500f
-    );
-}
-
-.collection-box:hover::before{
-    transform:translateX(-50%) scale(1.08) rotate(2deg);
-}
-
-.collection-box > *{
-    position:relative;
-    z-index:2;
-}
-
-.collection-box small{
-    color:#e2b84d;
-    letter-spacing:4px;
-}
-
-.collection-box h3{
-    font-family:'Playfair Display';
-    font-size:42px;
-    margin:8px 0 15px;
-}
-
-/* ================= ABOUT ================= */
-
-.about{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:100px;
-    align-items:center;
-}
-
-.about-visual{
-    height:500px;
-    position:relative;
-}
-
-.about-circle{
-    position:absolute;
-    width:400px;
-    height:400px;
-    border-radius:50%;
-    background:
-        radial-gradient(circle at 40% 30%,#a455c2,#35104b 60%,#100317);
-    box-shadow:
-        30px 30px 80px rgba(0,0,0,.5),
-        inset -20px -20px 60px rgba(0,0,0,.4);
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    animation:aboutFloat 5s ease-in-out infinite;
-}
-
-@keyframes aboutFloat{
-    50%{
-        transform:translate(-50%,-54%) rotate(5deg);
-    }
-}
-
-.about-circle::after{
-    content:'VÉ';
-    position:absolute;
-    font-family:'Playfair Display';
-    font-size:130px;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    color:rgba(235,193,89,.25);
-}
-
-.about h2{
-    font-family:'Playfair Display';
-    font-size:55px;
-    font-weight:500;
-}
-
-.about h2 span{
-    color:#ddb04b;
-}
-
-.about p{
-    color:#b9adbf;
-    line-height:2;
-    margin:25px 0;
-    font-size:14px;
-}
-
-/* ================= NEWSLETTER ================= */
-
-.newsletter{
-    text-align:center;
-    border-top:1px solid rgba(255,255,255,.08);
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.newsletter h2{
-    font-family:'Playfair Display';
-    font-size:50px;
-}
-
-.newsletter p{
-    color:#a99dad;
-    margin:15px auto 30px;
-}
-
-.email-box{
-    display:flex;
-    max-width:550px;
-    margin:auto;
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:50px;
-    padding:5px;
-    background:rgba(255,255,255,.04);
-}
-
-.email-box input{
-    flex:1;
-    background:transparent;
-    border:0;
-    outline:0;
-    color:white;
-    padding:15px 20px;
-}
-
-.email-box button{
-    border:0;
-    padding:0 25px;
-    border-radius:40px;
-    background:linear-gradient(110deg,#9c6817,#ffe391);
-    cursor:pointer;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    padding:60px 7%;
-    display:flex;
-    justify-content:space-between;
-    color:#8f8396;
-    font-size:12px;
-}
-
-.footer-logo{
-    font-family:'Playfair Display';
-    color:#dfb44e;
-    font-size:24px;
-}
-
-/* ================= REVEAL ================= */
-
-.reveal{
-    opacity:0;
-    transform:translateY(70px);
-    transition:1s cubic-bezier(.2,.7,.2,1);
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:900px){
-
-    nav ul{
-        display:none;
-    }
-
-    .hero{
-        min-height:auto;
-        padding-top:150px;
-        padding-bottom:100px;
-    }
-
-    .hero-content{
-        width:100%;
-    }
-
-    .hero-visual{
-        opacity:.3;
-        width:100%;
-    }
-
-    .products{
-        grid-template-columns:1fr;
-    }
-
-    .collection,
-    .about{
-        grid-template-columns:1fr;
-    }
-
-    .about{
-        gap:30px;
-    }
-
-    .about-visual{
-        height:400px;
-    }
-
-    .section-head h2,
-    .about h2,
-    .newsletter h2{
-        font-size:42px;
-    }
-
-    footer{
-        flex-direction:column;
-        gap:20px;
-    }
-}
-
-@media(max-width:500px){
-
-    .hero h1{
-        font-size:60px;
-    }
-
-    .model{
-        transform:scale(.75);
-        right:-100px;
-    }
-
-    .btn{
-        padding:13px 20px;
-    }
-
-    .collection-box{
-        padding:30px;
-    }
-
-    .collection-box h3{
-        font-size:32px;
-    }
-
-    .email-box{
-        flex-direction:column;
-        border-radius:20px;
-        gap:5px;
-    }
-
-    .email-box button{
-        height:45px;
-    }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UrFirst — Modern Fashion</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================= */
+
+        :root {
+            --violet-dark: #110719;
+            --violet: #4d176d;
+            --violet-light: #8f45b5;
+            --purple: #b56bda;
+
+            --gold: #d6a84f;
+            --gold-light: #f6dc8b;
+            --gold-dark: #9b6b20;
+
+            --white: #ffffff;
+            --muted: #c7bdce;
+
+            --glass: rgba(255,255,255,0.07);
+            --border: rgba(255,255,255,0.12);
+
+            --ease: cubic-bezier(.2,.8,.2,1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: var(--white);
+            background:
+                radial-gradient(circle at 15% 10%, rgba(154,68,196,.22), transparent 28%),
+                radial-gradient(circle at 90% 35%, rgba(214,168,79,.12), transparent 25%),
+                linear-gradient(135deg, #0b0610, #1b0b26 45%, #100613);
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
+            opacity: .035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        button {
+            font: inherit;
+        }
+
+
+        /* =========================================================
+           LOADER
+        ========================================================= */
+
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: #0b0610;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: loaderOut 1s 1.8s forwards;
+        }
+
+        .loader-logo {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            letter-spacing: -.06em;
+            background: linear-gradient(
+                120deg,
+                #fff,
+                var(--gold-light),
+                var(--gold),
+                #fff
+            );
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: goldFlow 2s infinite linear;
+        }
+
+        @keyframes loaderOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 5000;
+            padding: 22px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: rgba(10,4,15,.45);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,.07);
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -.05em;
+
+            background: linear-gradient(
+                100deg,
+                white,
+                var(--gold-light),
+                var(--gold)
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 34px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: .85rem;
+            color: #ddd2e3;
+            position: relative;
+            transition: .3s;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 1px;
+            left: 0;
+            bottom: -7px;
+            background: linear-gradient(90deg,var(--gold),var(--gold-light));
+            transition: .35s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            border: 1px solid rgba(214,168,79,.5);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: var(--gold-light);
+            font-size: .82rem;
+            transition: .35s;
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(120deg,var(--gold-dark),var(--gold));
+            color: #1a0b05;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 150px 6% 80px;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: 50px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: rgba(130,52,174,.18);
+            filter: blur(100px);
+            top: 10%;
+            left: -20%;
+            animation: floatBlob 8s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            animation: heroIn 1.2s var(--ease) both;
+        }
+
+        .eyebrow {
+            color: var(--gold-light);
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            font-size: .72rem;
+            margin-bottom: 22px;
+        }
+
+        h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(4rem, 8vw, 8.8rem);
+            line-height: .82;
+            letter-spacing: -.065em;
+            max-width: 850px;
+        }
+
+        h1 span {
+            display: block;
+            background:
+                linear-gradient(
+                    120deg,
+                    #fff 10%,
+                    var(--gold-light) 40%,
+                    var(--gold) 65%,
+                    #fff 90%
+                );
+            background-size: 250% 100%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: goldFlow 6s linear infinite;
+        }
+
+        .hero-text {
+            margin-top: 30px;
+            max-width: 530px;
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 28px;
+            border-radius: 100px;
+            border: 1px solid rgba(255,255,255,.15);
+            transition: .45s var(--ease);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            color: #180b05;
+            font-weight: 700;
+            background: linear-gradient(
+                120deg,
+                var(--gold-dark),
+                var(--gold-light),
+                var(--gold)
+            );
+            background-size: 200%;
+            box-shadow: 0 15px 45px rgba(214,168,79,.18);
+        }
+
+        .btn-primary:hover {
+            background-position: 100%;
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(214,168,79,.3);
+        }
+
+        .btn-outline {
+            color: white;
+            background: rgba(255,255,255,.04);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,.1);
+            transform: translateY(-5px);
+        }
+
+
+        /* =========================================================
+           HERO IMAGE
+        ========================================================= */
+
+        .hero-visual {
+            position: relative;
+            min-height: 650px;
+            perspective: 1400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-ring {
+            position: absolute;
+            width: 520px;
+            height: 520px;
+            border: 1px solid rgba(214,168,79,.3);
+            border-radius: 50%;
+            animation: spin 18s linear infinite;
+        }
+
+        .hero-ring::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--gold-light);
+            border-radius: 50%;
+            top: 5%;
+            left: 15%;
+            box-shadow: 0 0 30px var(--gold);
+        }
+
+        .hero-image {
+            width: min(390px,75%);
+            height: 570px;
+            object-fit: cover;
+            border-radius: 210px 210px 25px 25px;
+            position: relative;
+            z-index: 2;
+
+            transform: rotateY(-10deg) rotateX(4deg);
+            box-shadow:
+                35px 45px 90px rgba(0,0,0,.55),
+                0 0 80px rgba(137,57,180,.2);
+
+            animation: modelFloat 6s ease-in-out infinite;
+        }
+
+        .hero-badge {
+            position: absolute;
+            z-index: 4;
+            right: 5%;
+            bottom: 13%;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: rgba(24,10,30,.8);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(214,168,79,.5);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            color: var(--gold-light);
+            font-size: .72rem;
+            line-height: 1.4;
+            letter-spacing: .08em;
+
+            animation: badgeFloat 4s ease-in-out infinite;
+        }
+
+
+        /* =========================================================
+           SECTION
+        ========================================================= */
+
+        section {
+            padding: 120px 6%;
+            position: relative;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 55px;
+        }
+
+        .section-kicker {
+            color: var(--gold);
+            text-transform: uppercase;
+            font-size: .7rem;
+            letter-spacing: .3em;
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2.8rem,5vw,5rem);
+            letter-spacing: -.05em;
+            line-height: .95;
+        }
+
+        .section-description {
+            max-width: 420px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           COLLECTION
+        ========================================================= */
+
+        .collection {
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(255,255,255,.015),
+                    rgba(128,54,167,.05),
+                    rgba(255,255,255,.015)
+                );
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            position: relative;
+            min-height: 570px;
+            border-radius: 25px;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.1),
+                    rgba(255,255,255,.025)
+                );
+
+            border: 1px solid rgba(255,255,255,.1);
+            transform-style: preserve-3d;
+            transition:
+                transform .7s var(--ease),
+                border-color .5s,
+                box-shadow .5s;
+
+            opacity: 0;
+            transform: translateY(70px);
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform:
+                translateY(-15px)
+                rotateX(3deg)
+                rotateY(-3deg);
+            border-color: rgba(214,168,79,.5);
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.35),
+                0 0 45px rgba(142,63,179,.12);
+        }
+
+        .product-image {
+            height: 440px;
+            object-fit: cover;
+            transition: transform .9s var(--ease);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.07);
+        }
+
+        .product-info {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 25px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent,
+                    rgba(13,5,18,.96) 35%
+                );
+        }
+
+        .product-tag {
+            color: var(--gold-light);
+            font-size: .65rem;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+        }
+
+        .product-name {
+            font-family: "Playfair Display", serif;
+            font-size: 1.65rem;
+            margin-top: 5px;
+        }
+
+        .product-bottom {
+            margin-top: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        .shop-small {
+            font-size: .75rem;
+            padding: 8px 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(214,168,79,.4);
+        }
+
+
+        /* =========================================================
+           EDITORIAL
+        ========================================================= */
+
+        .editorial {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .editorial-image-wrap {
+            perspective: 1000px;
+        }
+
+        .editorial-image {
+            height: 650px;
+            object-fit: cover;
+            border-radius: 25px;
+            transform: rotateY(7deg);
+            box-shadow: 30px 35px 80px rgba(0,0,0,.45);
+            transition: transform .7s var(--ease);
+        }
+
+        .editorial-image:hover {
+            transform: rotateY(0) scale(1.015);
+        }
+
+        .editorial-content h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(3rem,5vw,6rem);
+            line-height: .9;
+            letter-spacing: -.06em;
+        }
+
+        .gold-line {
+            width: 100px;
+            height: 2px;
+            margin: 30px 0;
+            background: linear-gradient(
+                90deg,
+                var(--gold-dark),
+                var(--gold-light),
+                transparent
+            );
+        }
+
+        .editorial-content p {
+            color: var(--muted);
+            line-height: 1.9;
+            max-width: 560px;
+        }
+
+
+        /* =========================================================
+           LOOKBOOK
+        ========================================================= */
+
+        .lookbook-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr .9fr;
+            grid-template-rows: 300px 300px;
+            gap: 18px;
+        }
+
+        .look {
+            overflow: hidden;
+            border-radius: 22px;
+            position: relative;
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .look:first-child {
+            grid-row: span 2;
+        }
+
+        .look img {
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s var(--ease);
+        }
+
+        .look:hover img {
+            transform: scale(1.08);
+        }
+
+        .look::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                transparent 50%,
+                rgba(8,3,12,.7)
+            );
+        }
+
+        .look span {
+            position: absolute;
+            z-index: 2;
+            bottom: 20px;
+            left: 22px;
+            font-family: "Playfair Display",serif;
+            font-size: 1.5rem;
+        }
+
+
+        /* =========================================================
+           GOLD CTA
+        ========================================================= */
+
+        .cta {
+            margin: 60px 6% 120px;
+            padding: 90px 8%;
+            border-radius: 35px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255,255,255,.22),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    120deg,
+                    #351048,
+                    #74358f,
+                    #a26b2a,
+                    #5e2677
+                );
+
+            background-size: 300% 300%;
+            animation: gradientMove 12s ease infinite;
+
+            box-shadow:
+                0 40px 100px rgba(0,0,0,.4);
+        }
+
+        .cta::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .cta h2 {
+            position: relative;
+            font-family: "Playfair Display",serif;
+            font-size: clamp(3rem,6vw,7rem);
+            line-height: .9;
+            letter-spacing: -.06em;
+        }
+
+        .cta p {
+            position: relative;
+            max-width: 550px;
+            margin: 25px auto 30px;
+            color: rgba(255,255,255,.8);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding: 50px 6%;
+            border-top: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        footer p {
+            color: #8e8295;
+            font-size: .8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            font-size: .8rem;
+            color: #bcb0c1;
+        }
+
+
+        /* =========================================================
+           ANIMATIONS
+        ========================================================= */
+
+        @keyframes heroIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modelFloat {
+            0%,100% {
+                transform:
+                    rotateY(-10deg)
+                    rotateX(4deg)
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    rotateY(-4deg)
+                    rotateX(1deg)
+                    translateY(-18px);
+            }
+        }
+
+        @keyframes badgeFloat {
+            0%,100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes floatBlob {
+            0%,100% {
+                transform: translate(0,0);
+            }
+
+            50% {
+                transform: translate(100px,50px);
+            }
+        }
+
+        @keyframes goldFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 300% 50%;
+            }
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media(max-width: 1000px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-visual {
+                min-height: 600px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .editorial {
+                grid-template-columns: 1fr;
+            }
+
+            .lookbook-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 400px 250px 250px;
+            }
+
+            .look:first-child {
+                grid-column: span 2;
+                grid-row: auto;
+            }
+        }
+
+        @media(max-width: 650px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            h1 {
+                font-size: 4.5rem;
+            }
+
+            .hero-visual {
+                min-height: 520px;
+            }
+
+            .hero-ring {
+                width: 360px;
+                height: 360px;
+            }
+
+            .hero-image {
+                height: 470px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-head {
+                display: block;
+            }
+
+            .section-description {
+                margin-top: 20px;
+            }
+
+            .editorial-image {
+                height: 500px;
+            }
+
+            .lookbook-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(3,350px);
+            }
+
+            .look:first-child {
+                grid-column: auto;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<div class="cursor"></div>
-<div class="cursor-dot"></div>
 
-<!-- NAVIGATION -->
+    <!-- =========================================================
+         LOADING SCREEN
+    ========================================================= -->
 
-<nav>
-
-    <div class="logo">
-        VÉLORA
-        <span>ATELIER</span>
+    <div class="loader">
+        <div class="loader-logo">UrFirst</div>
     </div>
 
-    <ul>
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#shop">SHOP</a></li>
-        <li><a href="#collection">COLLECTION</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-    </ul>
 
-    <div class="nav-icons">
-        <div class="nav-icon">♡</div>
-        <div class="nav-icon">🛍</div>
-    </div>
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================= -->
 
-</nav>
+    <nav>
 
+        <a href="#" class="logo">UrFirst</a>
 
-<!-- HERO -->
+        <ul class="nav-links">
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#lookbook">Lookbook</a></li>
+        </ul>
 
-<section class="hero" id="home">
-
-    <div class="hero-content reveal">
-
-        <div class="eyebrow">
-            AUTUMN / WINTER 2026
-        </div>
-
-        <h1>
-            Wear
-            <span>Elegance.</span>
-        </h1>
-
-        <p>
-            Discover a new expression of luxury fashion.
-            Sculptural silhouettes, refined fabrics and
-            timeless violet tones designed for those who
-            dare to be unforgettable.
-        </p>
-
-        <a href="#shop" class="btn magnetic">
-            EXPLORE COLLECTION →
+        <a href="#collection" class="nav-btn">
+            Shop Collection
         </a>
 
-        <a href="#about" class="btn btn-outline magnetic">
-            OUR STORY
-        </a>
-
-    </div>
+    </nav>
 
 
-    <div class="hero-visual">
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
 
-        <div class="gold-ring"></div>
+    <main>
 
-        <div class="model">
+        <section class="hero">
 
-            <div class="model-body"></div>
+            <div class="hero-content">
 
-        </div>
+                <div class="eyebrow">
+                    Autumn / Winter 2026
+                </div>
 
-    </div>
+                <h1>
+                    Wear
+                    <span>Your First.</span>
+                </h1>
 
-</section>
+                <p class="hero-text">
+                    UrFirst creates modern fashion for people who
+                    believe personal style should feel effortless,
+                    expressive and unmistakably their own.
+                </p>
 
+                <div class="hero-actions">
 
-<!-- PRODUCTS -->
+                    <a href="#collection" class="btn btn-primary">
+                        Explore Collection →
+                    </a>
 
-<section id="shop">
+                    <a href="#story" class="btn btn-outline">
+                        Discover UrFirst
+                    </a>
 
-    <div class="section-head reveal">
-        <small>CURATED FOR YOU</small>
-        <h2>Signature Pieces</h2>
-    </div>
+                </div>
 
-    <div class="products">
-
-        <div class="card reveal tilt">
-
-            <div class="product-image">
-                <div class="dress"></div>
             </div>
 
-            <div class="card-info">
-                <span class="price">$189</span>
-                <h3>Violet Silk Dress</h3>
-                <p>Luxury evening collection</p>
+
+            <div class="hero-visual">
+
+                <div class="hero-ring"></div>
+
+                <img
+                    class="hero-image"
+                    src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=90"
+                    alt="UrFirst fashion model"
+                >
+
+                <div class="hero-badge">
+                    URFIRST<br>
+                    EST. 2026
+                </div>
+
             </div>
 
-        </div>
+        </section>
 
 
-        <div class="card reveal tilt">
+        <!-- =====================================================
+             COLLECTION
+        ====================================================== -->
 
-            <div class="product-image">
-                <div class="dress gold"></div>
+        <section class="collection" id="collection">
+
+            <div class="section-head">
+
+                <div>
+                    <div class="section-kicker">
+                        The Collection
+                    </div>
+
+                    <h2 class="section-title">
+                        New<br>Essentials.
+                    </h2>
+                </div>
+
+                <p class="section-description">
+                    Refined silhouettes, premium textures and
+                    contemporary details designed to become
+                    everyday statements.
+                </p>
+
             </div>
 
-            <div class="card-info">
-                <span class="price">$249</span>
-                <h3>Golden Aura Gown</h3>
-                <p>Limited edition couture</p>
+
+            <div class="product-grid">
+
+
+                <article class="product-card">
+
+                    <img
+                        class="product-image"
+                        src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=900&q=90"
+                        alt="Luxury clothing"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-tag">
+                            Essential 01
+                        </div>
+
+                        <div class="product-name">
+                            Violet Structure
+                        </div>
+
+                        <div class="product-bottom">
+                            <div class="price">$129</div>
+                            <div class="shop-small">View Piece</div>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <img
+                        class="product-image"
+                        src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=90"
+                        alt="Fashion model"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-tag">
+                            Essential 02
+                        </div>
+
+                        <div class="product-name">
+                            Golden Hour
+                        </div>
+
+                        <div class="product-bottom">
+                            <div class="price">$189</div>
+                            <div class="shop-small">View Piece</div>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <img
+                        class="product-image"
+                        src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=90"
+                        alt="Modern fashion"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-tag">
+                            Essential 03
+                        </div>
+
+                        <div class="product-name">
+                            After Dark
+                        </div>
+
+                        <div class="product-bottom">
+                            <div class="price">$159</div>
+                            <div class="shop-small">View Piece</div>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
             </div>
 
-        </div>
+        </section>
 
 
-        <div class="card reveal tilt">
+        <!-- =====================================================
+             STORY / EDITORIAL
+        ====================================================== -->
 
-            <div class="product-image">
-                <div class="dress black"></div>
+        <section id="story">
+
+            <div class="editorial">
+
+                <div class="editorial-image-wrap">
+
+                    <img
+                        class="editorial-image"
+                        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1100&q=90"
+                        alt="UrFirst fashion editorial"
+                    >
+
+                </div>
+
+
+                <div class="editorial-content">
+
+                    <div class="section-kicker">
+                        The UrFirst Philosophy
+                    </div>
+
+                    <h2>
+                        First<br>
+                        Yourself.
+                    </h2>
+
+                    <div class="gold-line"></div>
+
+                    <p>
+                        Fashion shouldn't tell you who to become.
+                        It should give you the confidence to express
+                        who you already are.
+
+                        <br><br>
+
+                        UrFirst blends clean contemporary design,
+                        sophisticated color and premium details
+                        into pieces made for modern individuality.
+                    </p>
+
+                    <br>
+
+                    <a href="#lookbook" class="btn btn-primary">
+                        Explore The Lookbook →
+                    </a>
+
+                </div>
+
             </div>
 
-            <div class="card-info">
-                <span class="price">$159</span>
-                <h3>Midnight Muse</h3>
-                <p>Modern signature silhouette</p>
+        </section>
+
+
+        <!-- =====================================================
+             LOOKBOOK
+        ====================================================== -->
+
+        <section id="lookbook">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="section-kicker">
+                        Visual Stories
+                    </div>
+
+                    <h2 class="section-title">
+                        The<br>Lookbook.
+                    </h2>
+
+                </div>
+
+                <p class="section-description">
+                    A visual expression of UrFirst — bold,
+                    minimal and designed around individuality.
+                </p>
+
             </div>
 
-        </div>
 
-    </div>
+            <div class="lookbook-grid">
 
-</section>
+                <div class="look">
+                    <img
+                        src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1100&q=90"
+                        alt="Fashion look"
+                    >
+                    <span>Violet Nights</span>
+                </div>
 
+                <div class="look">
+                    <img
+                        src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=900&q=90"
+                        alt="Fashion style"
+                    >
+                    <span>Pure Form</span>
+                </div>
 
-<!-- COLLECTION -->
+                <div class="look">
+                    <img
+                        src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=90"
+                        alt="Fashion model"
+                    >
+                    <span>Golden State</span>
+                </div>
 
-<section id="collection">
+                <div class="look">
+                    <img
+                        src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=90"
+                        alt="Modern clothing"
+                    >
+                    <span>Everyday Icon</span>
+                </div>
 
-    <div class="section-head reveal">
-        <small>DISCOVER</small>
-        <h2>The Collections</h2>
-    </div>
+                <div class="look">
+                    <img
+                        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=90"
+                        alt="Luxury fashion"
+                    >
+                    <span>After Hours</span>
+                </div>
 
-    <div class="collection">
+            </div>
 
-        <div class="collection-box reveal">
-
-            <small>01 / VIOLET</small>
-
-            <h3>Royal Violet</h3>
-
-            <p>
-                Deep tones. Soft textures.
-                An unforgettable presence.
-            </p>
-
-        </div>
-
-
-        <div class="collection-box reveal">
-
-            <small>02 / GOLD</small>
-
-            <h3>Golden Hour</h3>
-
-            <p>
-                Metallic details and luminous
-                silhouettes inspired by golden light.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
+        </section>
 
 
-<!-- ABOUT -->
+        <!-- =====================================================
+             CTA
+        ====================================================== -->
 
-<section id="about">
+        <div class="cta">
 
-    <div class="about">
-
-        <div class="about-visual reveal">
-            <div class="about-circle"></div>
-        </div>
-
-        <div class="reveal">
-
-            <small style="color:#dcae43;letter-spacing:4px;">
-                OUR PHILOSOPHY
-            </small>
+            <div class="section-kicker">
+                Your Style. Your Rules.
+            </div>
 
             <h2>
-                Fashion is an
-                <span>experience.</span>
+                Make It<br>
+                UrFirst.
             </h2>
 
             <p>
-                VÉLORA is created for modern individuals
-                who see fashion as more than clothing.
-                Every piece is designed to combine
-                sophisticated craftsmanship with
-                contemporary movement.
+                Discover pieces designed to move with you,
+                express you and stay with you.
             </p>
 
-            <a href="#contact" class="btn">
-                DISCOVER VÉLORA →
+            <a href="#collection" class="btn btn-primary">
+                Shop New Collection →
             </a>
 
         </div>
 
-    </div>
-
-</section>
+    </main>
 
 
-<!-- NEWSLETTER -->
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
 
-<section class="newsletter" id="contact">
+    <footer>
 
-    <div class="reveal">
-
-        <small style="color:#dcae43;letter-spacing:4px;">
-            JOIN THE WORLD OF VÉLORA
-        </small>
-
-        <h2>Stay in the spotlight.</h2>
+        <a href="#" class="logo">
+            UrFirst
+        </a>
 
         <p>
-            Receive new collection announcements,
-            private events and exclusive offers.
+            © 2026 UrFirst. All rights reserved.
         </p>
 
-        <form class="email-box">
+        <div class="footer-links">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">Contact</a>
+        </div>
 
-            <input
-                type="email"
-                placeholder="Your email address"
-                required
-            >
+    </footer>
 
-            <button type="submit">
-                JOIN
-            </button>
 
-        </form>
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
 
-    </div>
+    <script>
 
-</section>
+        /* ---------------------------------------------------------
+           Scroll Reveal
+        --------------------------------------------------------- */
 
+        const cards = document.querySelectorAll(".product-card");
 
-<!-- FOOTER -->
+        const revealObserver = new IntersectionObserver(
+            (entries) => {
 
-<footer>
+                entries.forEach((entry) => {
 
-    <div class="footer-logo">
-        VÉLORA
-    </div>
+                    if (entry.isIntersecting) {
 
-    <div>
-        © 2026 VÉLORA ATELIER — ALL RIGHTS RESERVED
-    </div>
+                        entry.target.classList.add("visible");
 
-    <div>
-        INSTAGRAM &nbsp; / &nbsp;
-        PINTEREST &nbsp; / &nbsp;
-        TIKTOK
-    </div>
+                    }
 
-</footer>
+                });
 
+            },
+            {
+                threshold: 0.15
+            }
+        );
 
-<script>
+        cards.forEach(card => {
+            revealObserver.observe(card);
+        });
 
-/* ================= CUSTOM CURSOR ================= */
 
-const cursor = document.querySelector('.cursor');
-const dot = document.querySelector('.cursor-dot');
+        /* ---------------------------------------------------------
+           3D Product Card Motion
+        --------------------------------------------------------- */
 
-document.addEventListener('mousemove',e=>{
+        document.querySelectorAll(".product-card").forEach(card => {
 
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
+            card.addEventListener("mousemove", (e) => {
 
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
+                const rect = card.getBoundingClientRect();
 
-});
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
 
-/* ================= PARTICLES ================= */
+                const rotateX =
+                    ((y - centerY) / centerY) * -4;
 
-for(let i=0;i<35;i++){
+                const rotateY =
+                    ((x - centerX) / centerX) * 4;
 
-    const p = document.createElement('div');
+                card.style.transform =
+                    `translateY(-15px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)`;
 
-    p.className='particle';
+            });
 
-    p.style.left=Math.random()*100+'%';
+            card.addEventListener("mouseleave", () => {
 
-    p.style.animationDuration=
-        (5+Math.random()*8)+'s';
+                card.style.transform =
+                    "translateY(0) rotateX(0) rotateY(0)";
 
-    p.style.animationDelay=
-        Math.random()*8+'s';
+            });
 
-    p.style.opacity=Math.random();
+        });
 
-    document.querySelector('.hero')
-        .appendChild(p);
 
-}
+        /* ---------------------------------------------------------
+           Smooth Navigation
+        --------------------------------------------------------- */
 
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-/* ================= SCROLL REVEAL ================= */
+            link.addEventListener("click", function(e) {
 
-const reveals =
-document.querySelectorAll('.reveal');
+                const target = document.querySelector(
+                    this.getAttribute("href")
+                );
 
-const observer =
-new IntersectionObserver(
-(entries)=>{
+                if (!target) return;
 
-    entries.forEach(entry=>{
+                e.preventDefault();
 
-        if(entry.isIntersecting){
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
 
-            entry.target.classList.add('active');
+            });
 
-        }
+        });
 
-    });
 
-},
-{
-    threshold:.15
-});
+        /* ---------------------------------------------------------
+           Parallax Hero
+        --------------------------------------------------------- */
 
-reveals.forEach(el=>{
-    observer.observe(el);
-});
+        window.addEventListener("scroll", () => {
 
+            const scrollY = window.scrollY;
 
-/* ================= 3D CARD TILT ================= */
+            const heroImage =
+                document.querySelector(".hero-image");
 
-document.querySelectorAll('.tilt')
-.forEach(card=>{
+            const ring =
+                document.querySelector(".hero-ring");
 
-    card.addEventListener('mousemove',e=>{
+            if (heroImage) {
 
-        const rect =
-        card.getBoundingClientRect();
+                heroImage.style.transform =
+                    `rotateY(-8deg)
+                     rotateX(3deg)
+                     translateY(${scrollY * .08}px)`;
 
-        const x =
-        e.clientX - rect.left;
+            }
 
-        const y =
-        e.clientY - rect.top;
+            if (ring) {
 
-        const centerX =
-        rect.width/2;
+                ring.style.transform =
+                    `rotate(${scrollY * .08}deg)`;
 
-        const centerY =
-        rect.height/2;
+            }
 
-        const rotateX =
-        ((y-centerY)/centerY)*-7;
+        });
 
-        const rotateY =
-        ((x-centerX)/centerX)*7;
 
-        card.style.transform =
-        `rotateX(${rotateX}deg)
-         rotateY(${rotateY}deg)
-         translateZ(10px)`;
+        /* ---------------------------------------------------------
+           Magnetic Button Effect
+        --------------------------------------------------------- */
 
-    });
+        document.querySelectorAll(".btn-primary").forEach(btn => {
 
-    card.addEventListener('mouseleave',()=>{
+            btn.addEventListener("mousemove", (e) => {
 
-        card.style.transform =
-        'rotateX(0) rotateY(0) translateZ(0)';
+                const rect = btn.getBoundingClientRect();
 
-    });
+                const x =
+                    e.clientX -
+                    rect.left -
+                    rect.width / 2;
 
-});
+                const y =
+                    e.clientY -
+                    rect.top -
+                    rect.height / 2;
 
+                btn.style.transform =
+                    `translate(${x * .08}px, ${y * .08}px) scale(1.03)`;
 
-/* ================= MAGNETIC BUTTONS ================= */
+            });
 
-document.querySelectorAll('.magnetic')
-.forEach(btn=>{
+            btn.addEventListener("mouseleave", () => {
 
-    btn.addEventListener('mousemove',e=>{
+                btn.style.transform = "";
 
-        const rect =
-        btn.getBoundingClientRect();
+            });
 
-        const x =
-        e.clientX -
-        rect.left -
-        rect.width/2;
+        });
 
-        const y =
-        e.clientY -
-        rect.top -
-        rect.height/2;
 
-        btn.style.transform =
-        `translate(${x*.15}px,
-                   ${y*.15}px)`;
+        /* ---------------------------------------------------------
+           Image Loading Enhancement
+        --------------------------------------------------------- */
 
-    });
+        document.querySelectorAll("img").forEach(img => {
 
-    btn.addEventListener('mouseleave',()=>{
+            img.loading = "lazy";
 
-        btn.style.transform='translate(0,0)';
+        });
 
-    });
-
-});
-
-
-/* ================= PARALLAX HERO ================= */
-
-window.addEventListener('scroll',()=>{
-
-    const scroll =
-    window.scrollY;
-
-    const model =
-    document.querySelector('.model');
-
-    if(model){
-
-        model.style.transform =
-        `translateY(${scroll*.08}px)
-         rotateY(${scroll*.015 - 8}deg)`;
-
-    }
-
-});
-
-
-/* ================= NEWSLETTER ================= */
-
-document.querySelector('.email-box')
-.addEventListener('submit',e=>{
-
-    e.preventDefault();
-
-    const button =
-    document.querySelector('.email-box button');
-
-    button.innerText='THANK YOU ✓';
-
-    setTimeout(()=>{
-
-        button.innerText='JOIN';
-
-    },2500);
-
-});
-
-</script>
+    </script>
 
 </body>
 </html>
