@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VÉLORA — Luxury Fashion</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --violet:#16051f;
+    --violet2:#321052;
+    --purple:#6f28a8;
+    --gold:#d8a63c;
+    --gold2:#ffe7a0;
+    --white:#fffaf2;
+    --muted:#cfc5d8;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:
+        radial-gradient(circle at 15% 20%,rgba(123,50,180,.25),transparent 30%),
+        radial-gradient(circle at 85% 70%,rgba(216,166,60,.12),transparent 30%),
+        #0c0312;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ================= CURSOR ================= */
+
+.cursor{
+    width:18px;
+    height:18px;
+    border:1px solid #e6b84e;
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    z-index:9999;
+    transform:translate(-50%,-50%);
+    transition:.08s linear;
+    mix-blend-mode:difference;
+}
+
+.cursor-dot{
+    width:5px;
+    height:5px;
+    background:#e6b84e;
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    z-index:10000;
+    transform:translate(-50%,-50%);
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    z-index:1000;
+    background:rgba(12,3,18,.55);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+    letter-spacing:5px;
+    background:linear-gradient(90deg,#fff,#d6a438,#fff0b2);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.logo span{
+    font-size:10px;
+    display:block;
+    letter-spacing:7px;
+    text-align:center;
+    margin-top:-5px;
+    font-family:Poppins;
+}
+
+nav ul{
+    display:flex;
+    gap:38px;
+    list-style:none;
+}
+
+nav ul a{
+    color:#eee;
+    text-decoration:none;
+    font-size:13px;
+    position:relative;
+}
+
+nav ul a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:1px;
+    background:#e1b348;
+    transition:.4s;
+}
+
+nav ul a:hover::after{
+    width:100%;
+}
+
+.nav-icons{
+    display:flex;
+    gap:15px;
+}
+
+.nav-icon{
+    width:38px;
+    height:38px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    transition:.3s;
+}
+
+.nav-icon:hover{
+    border-color:#dcae45;
+    transform:translateY(-3px);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:130px 7% 80px;
+    overflow:hidden;
+}
+
+.hero-content{
+    width:50%;
+    z-index:3;
+}
+
+.eyebrow{
+    color:#dfb34e;
+    letter-spacing:5px;
+    font-size:11px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(60px,8vw,125px);
+    line-height:.88;
+    font-weight:500;
+}
+
+.hero h1 span{
+    display:block;
+    background:linear-gradient(
+        110deg,
+        #fff 10%,
+        #e3b94e 35%,
+        #fff4bd 50%,
+        #b87912 70%,
+        #fff
+    );
+    background-size:250% auto;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:goldShine 5s linear infinite;
+}
+
+@keyframes goldShine{
+    to{background-position:250% center}
+}
+
+.hero p{
+    max-width:480px;
+    color:#cfc4d5;
+    margin:30px 0;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:15px 28px;
+    border-radius:40px;
+    text-decoration:none;
+    color:#16051f;
+    background:linear-gradient(110deg,#9e6815,#ffe28a,#bd801d,#ffeaa9);
+    background-size:300%;
+    animation:buttonGold 5s infinite linear;
+    font-size:12px;
+    font-weight:600;
+    transition:.4s;
+    box-shadow:0 10px 35px rgba(213,165,57,.15);
+}
+
+@keyframes buttonGold{
+    0%{background-position:0}
+    100%{background-position:300%}
+}
+
+.btn:hover{
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:0 20px 50px rgba(220,170,55,.25);
+}
+
+.btn-outline{
+    margin-left:12px;
+    background:transparent;
+    color:white;
+    border:1px solid rgba(255,255,255,.25);
+    animation:none;
+}
+
+/* ================= 3D MODEL ================= */
+
+.hero-visual{
+    position:absolute;
+    width:55%;
+    height:90%;
+    right:0;
+    top:10%;
+    perspective:1200px;
+}
+
+.model{
+    position:absolute;
+    width:420px;
+    height:600px;
+    right:12%;
+    top:8%;
+    transform-style:preserve-3d;
+    animation:floatModel 6s ease-in-out infinite;
+}
+
+@keyframes floatModel{
+    0%,100%{
+        transform:translateY(0) rotateY(-8deg) rotateX(2deg);
+    }
+    50%{
+        transform:translateY(-25px) rotateY(8deg) rotateX(-2deg);
+    }
+}
+
+.model-body{
+    position:absolute;
+    width:280px;
+    height:440px;
+    left:70px;
+    top:80px;
+    border-radius:50% 50% 25% 25%;
+    background:
+        linear-gradient(110deg,
+        #16051f 10%,
+        #5b2182 40%,
+        #a95cce 53%,
+        #321047 75%,
+        #0e0315);
+    box-shadow:
+        -30px 30px 70px rgba(0,0,0,.8),
+        20px 10px 50px rgba(150,70,190,.25),
+        inset 15px 0 30px rgba(255,255,255,.08);
+    transform:rotateY(-12deg);
+}
+
+.model-body::before{
+    content:'';
+    position:absolute;
+    width:100px;
+    height:120px;
+    background:#100316;
+    border-radius:0 0 50% 50%;
+    left:90px;
+    top:-20px;
+}
+
+.model-body::after{
+    content:'V';
+    position:absolute;
+    left:80px;
+    top:170px;
+    font-family:'Playfair Display';
+    font-size:130px;
+    color:rgba(239,195,87,.35);
+    text-shadow:0 0 40px rgba(240,190,65,.3);
+}
+
+.gold-ring{
+    position:absolute;
+    width:430px;
+    height:430px;
+    border:1px solid rgba(222,174,65,.35);
+    border-radius:50%;
+    top:120px;
+    right:0;
+    transform:rotateX(65deg) rotateZ(15deg);
+    animation:spinRing 14s linear infinite;
+}
+
+.gold-ring::before{
+    content:'';
+    position:absolute;
+    inset:20px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:50%;
+}
+
+@keyframes spinRing{
+    from{transform:rotateX(65deg) rotateZ(0)}
+    to{transform:rotateX(65deg) rotateZ(360deg)}
+}
+
+/* ================= PARTICLES ================= */
+
+.particle{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#e5b74e;
+    box-shadow:0 0 15px #e5b74e;
+    animation:particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+    0%{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+    }
+    20%{opacity:1}
+    80%{opacity:1}
+    100%{
+        transform:translateY(-100px) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* ================= SECTION ================= */
+
+section{
+    padding:120px 7%;
+    position:relative;
+}
+
+.section-head{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-head small{
+    color:#d8aa3f;
+    letter-spacing:4px;
+    font-size:10px;
+}
+
+.section-head h2{
+    font-family:'Playfair Display';
+    font-size:55px;
+    font-weight:500;
+    margin-top:10px;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+    perspective:1200px;
+}
+
+.card{
+    position:relative;
+    height:520px;
+    border-radius:25px;
+    overflow:hidden;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.02)
+    );
+    border:1px solid rgba(255,255,255,.1);
+    transform-style:preserve-3d;
+    transition:transform .2s ease, box-shadow .4s;
+}
+
+.card:hover{
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.45),
+        0 0 50px rgba(137,61,181,.12);
+}
+
+.product-image{
+    height:72%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image::before{
+    content:'';
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background:radial-gradient(circle,#8f47b6,transparent 65%);
+    position:absolute;
+    filter:blur(15px);
+}
+
+.dress{
+    width:180px;
+    height:300px;
+    border-radius:40% 40% 15% 15%;
+    background:linear-gradient(
+        100deg,
+        #21062d,
+        #9e48c5,
+        #4b1269,
+        #15031e
+    );
+    box-shadow:20px 20px 40px rgba(0,0,0,.5);
+    transform:rotate(-5deg);
+    transition:.5s;
+    position:relative;
+    z-index:2;
+}
+
+.card:hover .dress{
+    transform:rotate(3deg) scale(1.06) translateZ(30px);
+}
+
+.dress::after{
+    content:'';
+    position:absolute;
+    width:70px;
+    height:100px;
+    left:55px;
+    top:-45px;
+    background:#321044;
+    border-radius:0 0 50% 50%;
+}
+
+.dress.gold{
+    background:linear-gradient(
+        100deg,
+        #4a2807,
+        #f0c454,
+        #fff0a7,
+        #9c6919,
+        #3b2006
+    );
+}
+
+.dress.black{
+    background:linear-gradient(
+        100deg,
+        #07030b,
+        #3b2247,
+        #8c4a9e,
+        #100511
+    );
+}
+
+.card-info{
+    padding:22px 25px;
+}
+
+.card-info h3{
+    font-family:'Playfair Display';
+    font-size:23px;
+}
+
+.card-info p{
+    color:#a99caf;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.price{
+    float:right;
+    color:#e4b64e;
+}
+
+/* ================= COLLECTION ================= */
+
+.collection{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.collection-box{
+    min-height:500px;
+    border-radius:30px;
+    padding:50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(transparent 20%,rgba(10,2,14,.95)),
+        radial-gradient(circle at 50% 20%,#8543a7,#19051f 70%);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.collection-box:nth-child(2){
+    background:
+        linear-gradient(transparent 20%,rgba(10,2,14,.95)),
+        radial-gradient(circle at 50% 20%,#b07c22,#1b0c03 70%);
+}
+
+.collection-box::before{
+    content:'';
+    position:absolute;
+    width:280px;
+    height:450px;
+    top:30px;
+    left:50%;
+    transform:translateX(-50%);
+    background:linear-gradient(
+        100deg,
+        #19051f,
+        #7d3a9d,
+        #2a0b39
+    );
+    clip-path:polygon(
+        25% 0,
+        75% 0,
+        100% 25%,
+        82% 100%,
+        18% 100%,
+        0 25%
+    );
+    transition:.6s;
+}
+
+.collection-box:nth-child(2)::before{
+    background:linear-gradient(
+        100deg,
+        #5a350b,
+        #e6b84d,
+        #fff0aa,
+        #79500f
+    );
+}
+
+.collection-box:hover::before{
+    transform:translateX(-50%) scale(1.08) rotate(2deg);
+}
+
+.collection-box > *{
+    position:relative;
+    z-index:2;
+}
+
+.collection-box small{
+    color:#e2b84d;
+    letter-spacing:4px;
+}
+
+.collection-box h3{
+    font-family:'Playfair Display';
+    font-size:42px;
+    margin:8px 0 15px;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:100px;
+    align-items:center;
+}
+
+.about-visual{
+    height:500px;
+    position:relative;
+}
+
+.about-circle{
+    position:absolute;
+    width:400px;
+    height:400px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at 40% 30%,#a455c2,#35104b 60%,#100317);
+    box-shadow:
+        30px 30px 80px rgba(0,0,0,.5),
+        inset -20px -20px 60px rgba(0,0,0,.4);
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    animation:aboutFloat 5s ease-in-out infinite;
+}
+
+@keyframes aboutFloat{
+    50%{
+        transform:translate(-50%,-54%) rotate(5deg);
+    }
+}
+
+.about-circle::after{
+    content:'VÉ';
+    position:absolute;
+    font-family:'Playfair Display';
+    font-size:130px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    color:rgba(235,193,89,.25);
+}
+
+.about h2{
+    font-family:'Playfair Display';
+    font-size:55px;
+    font-weight:500;
+}
+
+.about h2 span{
+    color:#ddb04b;
+}
+
+.about p{
+    color:#b9adbf;
+    line-height:2;
+    margin:25px 0;
+    font-size:14px;
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter{
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.newsletter h2{
+    font-family:'Playfair Display';
+    font-size:50px;
+}
+
+.newsletter p{
+    color:#a99dad;
+    margin:15px auto 30px;
+}
+
+.email-box{
+    display:flex;
+    max-width:550px;
+    margin:auto;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:50px;
+    padding:5px;
+    background:rgba(255,255,255,.04);
+}
+
+.email-box input{
+    flex:1;
+    background:transparent;
+    border:0;
+    outline:0;
+    color:white;
+    padding:15px 20px;
+}
+
+.email-box button{
+    border:0;
+    padding:0 25px;
+    border-radius:40px;
+    background:linear-gradient(110deg,#9c6817,#ffe391);
+    cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    padding:60px 7%;
+    display:flex;
+    justify-content:space-between;
+    color:#8f8396;
+    font-size:12px;
+}
+
+.footer-logo{
+    font-family:'Playfair Display';
+    color:#dfb44e;
+    font-size:24px;
+}
+
+/* ================= REVEAL ================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(70px);
+    transition:1s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero{
+        min-height:auto;
+        padding-top:150px;
+        padding-bottom:100px;
+    }
+
+    .hero-content{
+        width:100%;
+    }
+
+    .hero-visual{
+        opacity:.3;
+        width:100%;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .collection,
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .about{
+        gap:30px;
+    }
+
+    .about-visual{
+        height:400px;
+    }
+
+    .section-head h2,
+    .about h2,
+    .newsletter h2{
+        font-size:42px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:20px;
+    }
+}
+
+@media(max-width:500px){
+
+    .hero h1{
+        font-size:60px;
+    }
+
+    .model{
+        transform:scale(.75);
+        right:-100px;
+    }
+
+    .btn{
+        padding:13px 20px;
+    }
+
+    .collection-box{
+        padding:30px;
+    }
+
+    .collection-box h3{
+        font-size:32px;
+    }
+
+    .email-box{
+        flex-direction:column;
+        border-radius:20px;
+        gap:5px;
+    }
+
+    .email-box button{
+        height:45px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="logo">
+        VÉLORA
+        <span>ATELIER</span>
+    </div>
+
+    <ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#shop">SHOP</a></li>
+        <li><a href="#collection">COLLECTION</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+    </ul>
+
+    <div class="nav-icons">
+        <div class="nav-icon">♡</div>
+        <div class="nav-icon">🛍</div>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content reveal">
+
+        <div class="eyebrow">
+            AUTUMN / WINTER 2026
+        </div>
+
+        <h1>
+            Wear
+            <span>Elegance.</span>
+        </h1>
+
+        <p>
+            Discover a new expression of luxury fashion.
+            Sculptural silhouettes, refined fabrics and
+            timeless violet tones designed for those who
+            dare to be unforgettable.
+        </p>
+
+        <a href="#shop" class="btn magnetic">
+            EXPLORE COLLECTION →
+        </a>
+
+        <a href="#about" class="btn btn-outline magnetic">
+            OUR STORY
+        </a>
+
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="gold-ring"></div>
+
+        <div class="model">
+
+            <div class="model-body"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section id="shop">
+
+    <div class="section-head reveal">
+        <small>CURATED FOR YOU</small>
+        <h2>Signature Pieces</h2>
+    </div>
+
+    <div class="products">
+
+        <div class="card reveal tilt">
+
+            <div class="product-image">
+                <div class="dress"></div>
+            </div>
+
+            <div class="card-info">
+                <span class="price">$189</span>
+                <h3>Violet Silk Dress</h3>
+                <p>Luxury evening collection</p>
+            </div>
+
+        </div>
+
+
+        <div class="card reveal tilt">
+
+            <div class="product-image">
+                <div class="dress gold"></div>
+            </div>
+
+            <div class="card-info">
+                <span class="price">$249</span>
+                <h3>Golden Aura Gown</h3>
+                <p>Limited edition couture</p>
+            </div>
+
+        </div>
+
+
+        <div class="card reveal tilt">
+
+            <div class="product-image">
+                <div class="dress black"></div>
+            </div>
+
+            <div class="card-info">
+                <span class="price">$159</span>
+                <h3>Midnight Muse</h3>
+                <p>Modern signature silhouette</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COLLECTION -->
+
+<section id="collection">
+
+    <div class="section-head reveal">
+        <small>DISCOVER</small>
+        <h2>The Collections</h2>
+    </div>
+
+    <div class="collection">
+
+        <div class="collection-box reveal">
+
+            <small>01 / VIOLET</small>
+
+            <h3>Royal Violet</h3>
+
+            <p>
+                Deep tones. Soft textures.
+                An unforgettable presence.
+            </p>
+
+        </div>
+
+
+        <div class="collection-box reveal">
+
+            <small>02 / GOLD</small>
+
+            <h3>Golden Hour</h3>
+
+            <p>
+                Metallic details and luminous
+                silhouettes inspired by golden light.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="about">
+
+        <div class="about-visual reveal">
+            <div class="about-circle"></div>
+        </div>
+
+        <div class="reveal">
+
+            <small style="color:#dcae43;letter-spacing:4px;">
+                OUR PHILOSOPHY
+            </small>
+
+            <h2>
+                Fashion is an
+                <span>experience.</span>
+            </h2>
+
+            <p>
+                VÉLORA is created for modern individuals
+                who see fashion as more than clothing.
+                Every piece is designed to combine
+                sophisticated craftsmanship with
+                contemporary movement.
+            </p>
+
+            <a href="#contact" class="btn">
+                DISCOVER VÉLORA →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter" id="contact">
+
+    <div class="reveal">
+
+        <small style="color:#dcae43;letter-spacing:4px;">
+            JOIN THE WORLD OF VÉLORA
+        </small>
+
+        <h2>Stay in the spotlight.</h2>
+
+        <p>
+            Receive new collection announcements,
+            private events and exclusive offers.
+        </p>
+
+        <form class="email-box">
+
+            <input
+                type="email"
+                placeholder="Your email address"
+                required
+            >
+
+            <button type="submit">
+                JOIN
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-logo">
+        VÉLORA
+    </div>
+
+    <div>
+        © 2026 VÉLORA ATELIER — ALL RIGHTS RESERVED
+    </div>
+
+    <div>
+        INSTAGRAM &nbsp; / &nbsp;
+        PINTEREST &nbsp; / &nbsp;
+        TIKTOK
+    </div>
+
+</footer>
+
+
+<script>
+
+/* ================= CUSTOM CURSOR ================= */
+
+const cursor = document.querySelector('.cursor');
+const dot = document.querySelector('.cursor-dot');
+
+document.addEventListener('mousemove',e=>{
+
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+
+});
+
+
+/* ================= PARTICLES ================= */
+
+for(let i=0;i<35;i++){
+
+    const p = document.createElement('div');
+
+    p.className='particle';
+
+    p.style.left=Math.random()*100+'%';
+
+    p.style.animationDuration=
+        (5+Math.random()*8)+'s';
+
+    p.style.animationDelay=
+        Math.random()*8+'s';
+
+    p.style.opacity=Math.random();
+
+    document.querySelector('.hero')
+        .appendChild(p);
+
+}
+
+
+/* ================= SCROLL REVEAL ================= */
+
+const reveals =
+document.querySelectorAll('.reveal');
+
+const observer =
+new IntersectionObserver(
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add('active');
+
+        }
+
+    });
+
+},
+{
+    threshold:.15
+});
+
+reveals.forEach(el=>{
+    observer.observe(el);
+});
+
+
+/* ================= 3D CARD TILT ================= */
+
+document.querySelectorAll('.tilt')
+.forEach(card=>{
+
+    card.addEventListener('mousemove',e=>{
+
+        const rect =
+        card.getBoundingClientRect();
+
+        const x =
+        e.clientX - rect.left;
+
+        const y =
+        e.clientY - rect.top;
+
+        const centerX =
+        rect.width/2;
+
+        const centerY =
+        rect.height/2;
+
+        const rotateX =
+        ((y-centerY)/centerY)*-7;
+
+        const rotateY =
+        ((x-centerX)/centerX)*7;
+
+        card.style.transform =
+        `rotateX(${rotateX}deg)
+         rotateY(${rotateY}deg)
+         translateZ(10px)`;
+
+    });
+
+    card.addEventListener('mouseleave',()=>{
+
+        card.style.transform =
+        'rotateX(0) rotateY(0) translateZ(0)';
+
+    });
+
+});
+
+
+/* ================= MAGNETIC BUTTONS ================= */
+
+document.querySelectorAll('.magnetic')
+.forEach(btn=>{
+
+    btn.addEventListener('mousemove',e=>{
+
+        const rect =
+        btn.getBoundingClientRect();
+
+        const x =
+        e.clientX -
+        rect.left -
+        rect.width/2;
+
+        const y =
+        e.clientY -
+        rect.top -
+        rect.height/2;
+
+        btn.style.transform =
+        `translate(${x*.15}px,
+                   ${y*.15}px)`;
+
+    });
+
+    btn.addEventListener('mouseleave',()=>{
+
+        btn.style.transform='translate(0,0)';
+
+    });
+
+});
+
+
+/* ================= PARALLAX HERO ================= */
+
+window.addEventListener('scroll',()=>{
+
+    const scroll =
+    window.scrollY;
+
+    const model =
+    document.querySelector('.model');
+
+    if(model){
+
+        model.style.transform =
+        `translateY(${scroll*.08}px)
+         rotateY(${scroll*.015 - 8}deg)`;
+
+    }
+
+});
+
+
+/* ================= NEWSLETTER ================= */
+
+document.querySelector('.email-box')
+.addEventListener('submit',e=>{
+
+    e.preventDefault();
+
+    const button =
+    document.querySelector('.email-box button');
+
+    button.innerText='THANK YOU ✓';
+
+    setTimeout(()=>{
+
+        button.innerText='JOIN';
+
+    },2500);
+
+});
+
+</script>
+
+</body>
+</html>
